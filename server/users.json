@@ -1,0 +1,12 @@
+[
+
+    //Do I use uuid for _id or just fixed numbers 1-242? The number of users is === # of plots.
+{
+    "_id"       : "",
+    "firstName" : "Ollie",
+    "lastName"  : "Haller",
+    "plotNum"   : "",
+    "password"  : "How does this work with Auth0??"
+}
+
+]

@@ -8,7 +8,7 @@ import 'swiper/swiper-bundle.css';
 const HomePage = () => {
     const [weather, setWeather] = useState(null);
     const [weatherAverage, setWeatherAverage] = useState(null);
-
+    const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
     useEffect(()=> {
      
         fetch("http://api.openweathermap.org/data/2.5/forecast?lat=45.5088&lon=-73.554&appid=498b5bd5209a45fb40c5dfde11edf05c")
@@ -55,7 +55,8 @@ const HomePage = () => {
        
 
         <p> Welcome to the Villeray Community Garden webpage!</p>
-        <p>{weather && `Chance of rain:${average[0].precipitation}%`}</p>
+        {/* I would like to show today's date and min/ max daily temperature here */}
+        <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
 
         </Wrapper>
 
