@@ -1,56 +1,49 @@
-[
+const inventory = [
 {
-    "_id" : "",
     "tool" : "wheelbarrow",
     "numInStock" : "12"
 },
 
 {
-    "_id" : "",
     "tool" : "shovel",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "spade",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "fork",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "pruning sheers",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "trowel",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "garden hoe",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "garden rake",
     "numInStock" : "20"
 },
 
 {
-    "_id" : "",
     "tool" : "broadfork",
     "numInStock" : "10"
 }
 
 ]
+
+module.exports = {inventory}

@@ -6,6 +6,7 @@
     "firstName" : "Ollie",
     "lastName"  : "Haller",
     "plotNum"   : "",
+    "email"     : "ollie.d.haller@gmail.com",
     "password"  : "How does this work with Auth0??"
 }
 

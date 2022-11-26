@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useEffect } from "react";
+import Post from "./MessageBoard/Post";
 
 
 
@@ -32,6 +33,10 @@ const App = () => {
           <Route
             path="/"
             element={<HomePage />}
+          />
+          <Route
+            path="/post"
+            element={ <Post/>}
           />
          
           <Route path="" element={<h1>404: Oops!</h1>} />

@@ -11,7 +11,7 @@ const HomePage = () => {
     const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
     useEffect(()=> {
      
-        fetch("http://api.openweathermap.org/data/2.5/forecast?lat=45.5088&lon=-73.554&appid=498b5bd5209a45fb40c5dfde11edf05c")
+        fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=45.5088&lon=-73.554&appid=${openWeatherKey}`)
         .then((res) => res.json())
         .then((data) => {
           setWeather(data);
