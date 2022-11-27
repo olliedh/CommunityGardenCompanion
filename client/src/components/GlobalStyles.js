@@ -93,6 +93,7 @@ a:active {
 --metallic-sunburst: hsla(49, 46%, 41%, 1);
 //dark brown for footer, maybe test
 --dark-sienna: hsla(11, 62%, 14%, 1);
+--liver-organ: hsla(13, 57%, 25%, 1);
 --teal-blue: hsla(195, 37%, 41%, 1);
 
 //bold green options:

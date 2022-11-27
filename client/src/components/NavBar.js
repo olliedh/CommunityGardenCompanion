@@ -21,6 +21,8 @@ export default NavBar;
 
 const Wrapper = styled.div`
 background: var(--teal-blue);
+background: linear-gradient(90deg, #5D9FB5,var(--teal-blue));
+
 min-height: 1rem;
 padding: 1% 3% 1% 3%;
 display: flex;
