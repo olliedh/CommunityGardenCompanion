@@ -114,12 +114,17 @@ a:active {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
     font-family: "MuseoModerno", sans-serif;
     font-weight: 700;
     color: var(--forest-green-traditional);
   }
 
+  h2, h3, h4, h5, h6 {
+    color: #7ca982;
+    font-family: "hind", sans-serif;
+
+  }
   p, body {
     color: var(--charleston-green);
     font-family: "hind", sans-serif;

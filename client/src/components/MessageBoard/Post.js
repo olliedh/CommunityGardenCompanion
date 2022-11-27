@@ -3,12 +3,32 @@ import styled from "styled-components";
 
 const Post = () =>{
 
-    const [postData, setPostData] = useState({})
+    const [postData, setPostData] = useState(null)
 
-    console.log("postData", postData);
     const postHandler = (e) => {
         e.preventDefault()
-    }
+     console.log(postData)
+        fetch("/post/newpost", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title:postData.title, content:postData.content }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("Success! :", data);
+      
+              setPostData("");
+            //   setCharacterCount(280);
+            //   setToggle(!toggle);
+            })
+            .catch((error) => {
+              console.log("Error! :", error);
+            //   navigate("/posterror");
+            });
+        };
+
 
     const changeHandler = (e)=>{
         setPostData({...postData,[e.target.name]:e.target.value})
@@ -19,7 +39,7 @@ const Post = () =>{
         <div>Post</div>
 
         <StyledForm onSubmit={postHandler} >
-        <label >Topic</label>
+        {/* <label >Topic</label>
             <div>
             <label >Tips</label>
             <input type="radio" name="topic" value="tips" onChange={changeHandler}  />
@@ -27,16 +47,20 @@ const Post = () =>{
             <input type="radio" name="topic" value="trades" onChange={changeHandler} />
             <label >General</label>
             <input type="radio" value="general" name="topic" onChange={changeHandler} />
-            </div>
+            </div> */}
             <label >Title</label>
-            <input type="text" name="title" onChange={changeHandler} />
+            <input type="text" 
+            // value={postData.title} 
+            name="title" onChange={changeHandler} />
 
             <label >Content</label>
-            <textarea name="content" id="" cols="30" rows="10" onChange={changeHandler}></textarea>
+            <textarea name="content"
+            //  value={postData.content} 
+             id="" cols="30" rows="10" onChange={changeHandler}></textarea>
 
           
 
-            <button>Post</button>
+            <button  type="submit" disabled={postData?  false : true}>Post</button>
          
 
         </StyledForm>

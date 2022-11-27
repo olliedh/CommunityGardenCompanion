@@ -8,7 +8,9 @@ const NavBar = () => {
     const {isAuthenticated} = useAuth0()
     return ( <>
     <Wrapper>
-    <NavLink to={"/post"}>Post</NavLink>
+    <StyledNavLink to={"/post"}>Post</StyledNavLink>
+
+    <StyledNavLink to={"/messageboard"}>Message Board</StyledNavLink>
       {isAuthenticated? <LogoutButton/>:  <LoginButton/> }
      
     </Wrapper>
@@ -23,8 +25,21 @@ min-height: 1rem;
 padding: 1% 3% 1% 3%;
 display: flex;
 justify-content: flex-end;
+align-items: center;
 gap: 10px;
 
 
+
+`
+
+const StyledNavLink = styled(NavLink)`
+
+
+font-family: "hind";
+font-weight: 500;
+color: var(--bone);
+&:visited {
+  color: #f1ab86;
+}
 
 `
