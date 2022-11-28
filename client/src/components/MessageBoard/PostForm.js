@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 const Post = () =>{
 
     const [postData, setPostData] = useState(null)
+   const [toggle, setToggle] = useState(false)
 
     const postHandler = (e) => {
         e.preventDefault()
@@ -13,7 +15,7 @@ const Post = () =>{
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title:postData.title, content:postData.content }),
+            body: JSON.stringify({ title:postData.title, content:postData.content, time:moment().format('llll')}),
           })
             .then((res) => res.json())
             .then((data) => {
@@ -21,7 +23,7 @@ const Post = () =>{
       
               setPostData("");
             //   setCharacterCount(280);
-            //   setToggle(!toggle);
+              setToggle(!toggle);
             })
             .catch((error) => {
               console.log("Error! :", error);
@@ -36,7 +38,6 @@ const Post = () =>{
     return(
         <>
         <Wrapper>
-        <div>Post</div>
 
         <StyledForm onSubmit={postHandler} >
         {/* <label >Topic</label>

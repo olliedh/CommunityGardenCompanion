@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Controller, Thumbs } from 'swiper';
-import 'swiper/swiper-bundle.css';
-
+// import {Swiper, SwiperSlide} from "swiper/react";
+// import SwiperCore, { Navigation, Pagination, Controller, Thumbs } from 'swiper';
+// import 'swiper/swiper-bundle.css';
+import moment from "moment/moment";
 
 const HomePage = () => {
     const [weather, setWeather] = useState(null);
@@ -56,8 +56,9 @@ const HomePage = () => {
 
         <p> Welcome to the Villeray Community Garden webpage!</p>
         {/* I would like to show today's date and min/ max daily temperature here */}
+        {moment().format('MMMM Do YYYY')}
         <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
-
+        <p>{weather && `Average temperature: ${average[0].temperature} °C`}</p>
         </Wrapper>
 
         </>

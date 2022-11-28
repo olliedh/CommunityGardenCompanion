@@ -6,13 +6,18 @@ import NavBar from "./NavBar";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
-import Post from "./MessageBoard/Post";
+import Post from "./MessageBoard/PostForm";
 import MessageBoard from "./MessageBoard/MessageBoard";
+import PlantingTable from "./PlantingTable";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LoginButton";
+import Profile from "./Profile";
 
 
 const App = () => {
 
   const [post, setPost] = useState({});
+  const [toggle, setToggle] = useState(false)
   useEffect(()=> {
 
     fetch("http://api.openweathermap.org/data/2.5/forecast?lat=45.5088&lon=-73.554&appid=498b5bd5209a45fb40c5dfde11edf05c")
@@ -38,12 +43,20 @@ const App = () => {
           />
           <Route
             path="/post"
-            element={ <Post/>}
+            element={ <Post toggle={toggle} setToggle={setToggle}/>}
           />
          
          <Route
             path="/messageboard"
-            element={ <MessageBoard/>}
+            element={ <MessageBoard toggle={toggle} setToggle={setToggle}/>}
+          />
+ <Route
+            path="/profile"
+            element={ <Profile/>}
+          />
+<Route
+            path="/plantingtable"
+            element={ <PlantingTable/>}
           />
 
           <Route path="" element={<h1>404: Oops!</h1>} />
