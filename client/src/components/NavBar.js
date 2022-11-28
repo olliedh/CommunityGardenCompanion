@@ -10,7 +10,8 @@ const NavBar = () => {
     return ( <>
     <Wrapper>
     <StyledNavLink to={"/"}>Home</StyledNavLink>
-
+    
+    <StyledNavLink to={"/plantingtabletest"}>Planting Chart</StyledNavLink>
     <StyledNavLink to={"/post"}>Post</StyledNavLink>
 
     <StyledNavLink to={"/messageboard"}>Message Board</StyledNavLink>

@@ -12,7 +12,7 @@ import PlantingTable from "./PlantingTable";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LoginButton";
 import Profile from "./Profile";
-
+import PlantingTableTest from "./PlantingTableTest";
 
 const App = () => {
 
@@ -55,8 +55,8 @@ const App = () => {
             element={ <Profile/>}
           />
 <Route
-            path="/plantingtable"
-            element={ <PlantingTable/>}
+            path="/plantingtabletest"
+            element={ <PlantingTableTest/>}
           />
 
           <Route path="" element={<h1>404: Oops!</h1>} />

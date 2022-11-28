@@ -132,7 +132,27 @@ h1 {
     background-color: var(--bone);
   }
 
+table {
+ border-collapse: collapse;
+}
 
+td {
+
+  border: solid black 1px;
+
+  
+}
+
+
+tr{
+
+ 
+}
+
+th {
+ padding-right: 10px;
+
+}
 
 `
 

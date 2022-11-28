@@ -1,203 +1,208 @@
-const  
-PlantingTable= () => {
-    return ( <>
-     <thead><tr>
-  <th>Crop</th>
-  <th>Sow seeds indoors</th>
-  <th>Transplant seedlings into the garden</th>
-  <th>Direct sow seeds</th>
-</tr></thead>
-<tbody>  <tr>
-  <td data-th="Crop"><a href="/plants/group/asparagus/" target="_plant">Asparagus</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">Mar 19 - Apr  3</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/beans/" target="_plant">Beans</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 31</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/beets/" target="_plant">Beets</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar  8 - Mar 22</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Broccoli</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Brussel Sprouts</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Cabbage</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/cantaloupes/" target="_plant">Cantaloupe</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Apr 19 - May  3</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/carrots/" target="_plant">Carrots</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar 22 - Apr 19</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Cauliflower</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/swisschard/" target="_plant">Chard</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar 22 - Apr  5</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Collards</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/view/79604/Corn-Zea-mays-subsp-mays/" target="_plant">Corn</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 17</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/cucumbers/" target="_plant">Cucumbers</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 17</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/eggplants/" target="_plant">Eggplants</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">May  3 - May 17</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/cucurbits/" target="_plant">Gourds, Squash and Pumpkins</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 17</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Kale</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Kohlrabi</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/lettuces/" target="_plant">Lettuce</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Mar 22 - Apr 19</td>
-  <td data-th="Direct sow seeds">Mar 22 - Apr 19</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/brassicas/" target="_plant">Mustard</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/okra/" target="_plant">Okra</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 17</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/onions/" target="_plant">Onions</a></td>
-  <td data-th="Sow seeds indoors">Feb 16 - Feb 23</td>
-  <td data-th="Transplant seedlings into the garden">Mar  4 - Apr  3</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/peas/" target="_plant">Peas (English)</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar  4 - Apr  3</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/southernpeas/" target="_plant">Peas (Southern)</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 31</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/peas/" target="_plant">Peas (Sugar Snap)</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar  4 - Apr  3</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/peppers/" target="_plant">Peppers</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">May  3 - May 17</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/potatoes/" target="_plant">Potatoes</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar  4 - Apr  3</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/radishes/" target="_plant">Radishes</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">Mar 19 - May 17</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/spinach/" target="_plant">Spinach</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">Apr  5 - Apr 19</td>
-  <td data-th="Direct sow seeds">Mar 19 - Apr 19</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/sweetpotatoes/" target="_plant">Sweet Potatoes</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">May  3 - May 24</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/tomatoes/" target="_plant">Tomatoes</a></td>
-  <td data-th="Sow seeds indoors">Feb 23 - Mar  8</td>
-  <td data-th="Transplant seedlings into the garden">May  3 - May 17</td>
-  <td data-th="Direct sow seeds">n/a</td>
-</tr>
-<tr>
-  <td data-th="Crop"><a href="/plants/group/watermelons/" target="_plant">Watermelon</a></td>
-  <td data-th="Sow seeds indoors">n/a</td>
-  <td data-th="Transplant seedlings into the garden">n/a</td>
-  <td data-th="Direct sow seeds">May  3 - May 17</td>
-</tr>
-</tbody>
+// const  
+// PlantingTable= () => {
+//     return ( <>
+//     <div>
+//   <h2>Crop</h2>
+//   <h2>Sow seeds indoors</h2>
+//   <h2>Transplant seedlings into the garden</h2>
+//   <h2>Direct sow seeds</h2>
+//   </div>
+
+//   <div>
+//   <h3>Asparagus</h3>
+//   <p>n/a</p>
+//   </p>>Mar 19 - Apr  3</p>
+//   <p>n/a</p>
+//  </div>
+
+//  <div>
+//   <h3>Beans</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 31</p>
+//   </div>
+
+//   <h3>Beets</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar  8 - Mar 22</p>
+
+// <div>
+//   <h3>Broccoli</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+
+// <div>
+//   <h3>Brussel Sprouts</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+
+// <div>
+//   <h3>Cabbage</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+
+// <div>
+//   <h3>Cantaloupe</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Apr 19 - May  3</p>
+// </div>
+// <div>
+//   <h3>Carrots</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar 22 - Apr 19</p>
+// </div>
+// <div>
+//   <h3>Cauliflower</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Chard</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar 22 - Apr  5</p>
+// </div>
+// <div>
+//   <h3>Collards</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Corn</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 17</p>
+// </div>
+// <div>
+//   <h3>Cucumbers</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 17</p>
+// </div>
+// <div>
+//   <h3>Eggplants</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>May  3 - May 17</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Gourds, Squash and Pumpkins</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 17</p>
+// </div>
+// <div>
+//   <h3>Kale</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Kohlrabi</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Lettuce</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Mar 22 - Apr 19</p>
+//   <p>Mar 22 - Apr 19</p>
+// </div>
+// <div>
+//   <h3>Mustard</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Okra</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 17</p>
+// </div>
+// <div>
+//   <h3>Onions</h3>
+//   <p>Feb 16 - Feb 23</p>
+//   <p>Mar  4 - Apr  3</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Peas (English)</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar  4 - Apr  3</p>
+// </div>
+// <div>
+//   <h3>Peas (Southern)</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 31</p>
+// </div>
+// <div>
+//   <h3>Peas (Sugar Snap)</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar  4 - Apr  3</p>
+// </div>
+// <div>
+//   <h3>Peppers</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>May  3 - May 17</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Potatoes</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar  4 - Apr  3</p>
+// </div>
+// <div>
+//   <h3>Radishes</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>Mar 19 - May 17</p>
+// </div>
+// <div>
+//   <h3>Spinach</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>Apr  5 - Apr 19</p>
+//   <p>Mar 19 - Apr 19</p>
+// </div>
+// <div>
+//   <h3>Sweet Potatoes</h3>
+//   <p>n/a</p>
+//   <p>May  3 - May 24</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Tomatoes</h3>
+//   <p>Feb 23 - Mar  8</p>
+//   <p>May  3 - May 17</p>
+//   <p>n/a</p>
+// </div>
+// <div>
+//   <h3>Watermelon</h3>
+//   <p>n/a</p>
+//   <p>n/a</p>
+//   <p>May  3 - May 17</p>
+// </div>
+
     
-    </>  );
-}
+//     </>  );
+// }
  
-export default
-PlantingTable;
+// export default
+// PlantingTable;
  
