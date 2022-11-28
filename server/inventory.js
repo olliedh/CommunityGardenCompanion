@@ -1,4 +1,6 @@
 const inventory = [
+
+    //simplify to 5 items, instead of numInStock use isAvailable: boolean
 {
     "tool" : "wheelbarrow",
     "numInStock" : "12"

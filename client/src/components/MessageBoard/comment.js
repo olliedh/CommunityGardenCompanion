@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import { useAuth0 } from "@auth0/auth0-react";
-const Post = ({showPost}) =>{
+const Comment = ({showPost}) =>{
 
     const [postData, setPostData] = useState(null)
    const [toggle, setToggle] = useState(false)
@@ -12,11 +12,11 @@ const Post = ({showPost}) =>{
      console.log(postData)
      setPostData({title: "", content: ""});
         fetch("/post/newpost", {
-            method: "POST",
+            method: "PATCH",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title:postData.title, content:postData.content, time:moment().format('llll'), userId: user.email, name: user.name, comments: []}),
+            body: JSON.stringify({ content:postData.content, time:moment().format('llll'), userId: user.email, name: user.name}),
           })
             .then((res) => res.json())
             .then((data) => {
@@ -43,20 +43,8 @@ const Post = ({showPost}) =>{
         <Wrapper>
 
         <StyledForm onSubmit={postHandler} >
-        {/* <label >Topic</label>
-            <div>
-            <label >Tips</label>
-            <input type="radio" name="topic" value="tips" onChange={changeHandler}  />
-            <label >Trades</label>
-            <input type="radio" name="topic" value="trades" onChange={changeHandler} />
-            <label >General</label>
-            <input type="radio" value="general" name="topic" onChange={changeHandler} />
-            </div> */}
-            <label >Title</label>
-            <input type="text" 
-            value={postData?.title} 
-            name="title" onChange={changeHandler} />
-
+   
+           
             <label >Content</label>
             <textarea name="content"
              value={postData?.content} 
@@ -74,7 +62,7 @@ const Post = ({showPost}) =>{
 }
 
 
-export default Post
+export default Comment
 
 const Wrapper = styled.div`
 

@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Post from "./PostForm";
+import {useAuth0} from "@auth0/auth0-react"
+import { NavLink } from "react-router-dom";
 
 const MessageBoard = ({toggle, setToggle}) => {
 
+    const {isAuthenticated} = useAuth0()
     // const postHandler = (e) => {
     //     e.preventDefault();
 
@@ -11,27 +14,31 @@ const MessageBoard = ({toggle, setToggle}) => {
     const [postsFeed, setPostsFeed] = useState({})
     const [postState, setPostState] = useState(null)
     const [status, setStatus] = useState("loading...")
-  
+  const showPost = () => {
+ 
+    fetch("/posts")
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status === 400 || data.status === 500) {
+          //is data.message relevant here?
+        throw new Error(data.message);
+      } else {
+        setPostState(data);
+      // console.log(data.data);
+        setPostsFeed(data);
+        setStatus("idle");
+      
+      }
+    })
+    .catch((error) => {
+      // navigate("/error");
+      console.log(error)
+    });
+
+  }
 
   useEffect(() => {
-    fetch("/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 400 || data.status === 500) {
-            //is data.message relevant here?
-          throw new Error(data.message);
-        } else {
-          setPostState(data);
-        // console.log(data.data);
-          setPostsFeed(data);
-          setStatus("idle");
-        
-        }
-      })
-      .catch((error) => {
-        // navigate("/error");
-        console.log(error)
-      });
+    showPost()
   }, [toggle]);
 
     return ( <> {status === "loading..." ? (
@@ -45,25 +52,9 @@ const MessageBoard = ({toggle, setToggle}) => {
     
 
     <ul>
-    {/* <li>
-  looking for seeds
 
-
-    </li>
-
-        <li>
-
-   tips for growing eggplants
-        </li> */}
-
-        <li>
-        {postState.data[0].title} : {" "
-        } 
-        {postState.data[0].content}
-       
-         
-        </li>
-        {/* map not grabbing on to correct data */}
+    
+      
         {postState && postState.data.map((obj)=> {
             return <li key={obj._id}>{obj.time} {" "} Title:  {" "} {obj.title}  {" "} Content: {" "} {obj.content}</li>
          })
@@ -71,13 +62,11 @@ const MessageBoard = ({toggle, setToggle}) => {
          }
     </ul>
     <div>
-    <button>post</button>
-    
+   
 
-    <button>Log in to post</button> 
 
     </div>
-    <Post/>
+   {isAuthenticated && <Post showPost={showPost}/>} 
 
     </ContentBox> 
     )}

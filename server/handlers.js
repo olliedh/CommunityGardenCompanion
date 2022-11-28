@@ -20,13 +20,12 @@ const {v4:uuidv4} = require("uuid")
 const addNewPost = async (req, res) => {
     // get the order info from the body object
     const {
-        //  _id, name, email, 
-         title, content, time } =
+        //  title, content, _id, name, email (as userID), comments
+         title, content, time, userId, name, comments } =
       req.body;
       console.log(req.body)
 const _id = uuidv4();
 
-  
     // create a new client
     const client = new MongoClient(MONGO_URI, options);
     try {
@@ -37,7 +36,7 @@ const _id = uuidv4();
       // create a new post object
       const newPost = {
         _id,
-        title, content, time
+        title, content, time, userId, name, comments
       };
       // insert the post into the "posts" collection
       await db.collection("posts").insertOne(newPost);

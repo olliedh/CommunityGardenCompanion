@@ -139,6 +139,15 @@ table {
 td {
 
   border: solid black 1px;
+  /* &:nth-of-type(5n) {
+
+    font-weight: bold;
+
+    &:first-of-type {
+      
+    font-weight: bold;
+    }
+  } */
 
   
 }
@@ -150,7 +159,7 @@ tr{
 }
 
 th {
- padding-right: 10px;
+ padding-left: 5px;
 
 }
 

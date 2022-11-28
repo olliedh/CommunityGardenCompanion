@@ -12,8 +12,10 @@ const NavBar = () => {
     <StyledNavLink to={"/"}>Home</StyledNavLink>
     
     <StyledNavLink to={"/plantingtabletest"}>Planting Chart</StyledNavLink>
-    <StyledNavLink to={"/post"}>Post</StyledNavLink>
 
+    {isAuthenticated &&  <StyledNavLink to={"/loanform"}>The Toolshed</StyledNavLink>}
+
+   
     <StyledNavLink to={"/messageboard"}>Message Board</StyledNavLink>
 
     <StyledNavLink to={"/profile"}>Profile</StyledNavLink>
