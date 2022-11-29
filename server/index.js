@@ -6,9 +6,9 @@ const morgan = require("morgan");
 const {
    addNewPost,
    getPosts, 
-//    getTitles,
-//    getPost,
-//    addComment,
+
+   getPost,
+   addComment,
 //    editPost, 
 //    deletePost,
 //    editComment,
@@ -26,16 +26,15 @@ express()
     res.status(200).json({status: 200, message:'Hello World!'});
     })
 //add a post to the database
-    .post('/post/newpost', addNewPost)
+ .post('/post/newpost', addNewPost)
 //get all posts from the database
-    .get('/posts', getPosts)
-// //get all post titles from the database
-// .get('/posts/titles', getTitles)
+ .get('/posts', getPosts)
+
 // // get one post 
-// .get('/post/:_id', getPost)
+.get('/post/:_id', getPost)
 
 // //add a comment to a post
-// .patch('/post/:id/comment', addComment)
+.patch('/post/comment', addComment)
 
 // //edit a post that was authored by the logged in user
 // .patch('/post/:_id', editPost)

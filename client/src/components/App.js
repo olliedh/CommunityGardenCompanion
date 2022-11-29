@@ -13,6 +13,7 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LoginButton";
 import Profile from "./Profile";
 import PlantingTableTest from "./PlantingTableTest";
+import PostDetails from "./MessageBoard/PostDetails";
 
 const App = () => {
 
@@ -42,8 +43,8 @@ const App = () => {
             element={<HomePage />}
           />
           <Route
-            path="/post"
-            element={ <Post toggle={toggle} setToggle={setToggle}/>}
+            path={"/postdetails/:postId"}
+            element={ <PostDetails  toggle={toggle} setToggle={setToggle}/>}
           />
          
          <Route

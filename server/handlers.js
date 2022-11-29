@@ -1,6 +1,6 @@
 //need to simplify this and add an endpoint
 // import Mongo Client
-const { MongoClient } = require("mongodb");
+const { MongoClient, CommandFailedEvent } = require("mongodb");
 // create a constant to use for our Db name
 const DB_NAME = "CommunityGardenCompanion";
 
@@ -52,7 +52,7 @@ const _id = uuidv4();
     }
   };
 
-  
+  //this endpoint may be used to generate the titles alone
 const getPosts = async (req, res) => {
 
     const client = new MongoClient(MONGO_URI, options);
@@ -91,4 +91,76 @@ const getPosts = async (req, res) => {
   };
 }
 
-  module.exports = {addNewPost, getPosts};
+
+//this one doesn't work yet! the fetch url needs fixing
+const addComment= async (req, res) => {
+  // get the comment info from the body object
+  const {
+      //  title, content, _id, name, email (as userID), comments
+       _id, content, time, userId, name } =
+    req.body;
+    console.log(req.body)
+
+
+  // create a new client
+  const client = new MongoClient(MONGO_URI, options);
+  try {
+    // connect to the client
+    await client.connect();
+    // declare the database
+    const db = client.db(DB_NAME);
+    // create a new post object
+    const newComment = {
+      _id,
+    content, time, userId, name
+    };
+
+    
+  const query = { _id,};
+  console.log("this one is the query ", query);
+//this is meant to specify to push the req.body into the value of the comments field (which is an array)
+  const newValue = {
+    $push: { comments: newComment}
+  };
+    // insert the comment into the "comments" array of the post
+    const update = await db.collection("posts").updateOne(query, newValue);
+    console.log(update.modifiedCount)
+  if (update.modifiedCount > 0) {   
+     res.status(200).json({ status: 200, data: newComment });}
+     else {
+      res.status(400).json({status: 400, message: "update failed"})
+     }
+
+  } catch (err) {
+    // if there is an error, console log it and send a 500 status
+    console.log(err.stack);
+    res.status(500).json({ status: 500, message: err.message });
+  } finally {
+    // close the connection
+    client.close();
+  }
+};
+
+
+
+const getPost = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+  const db = client.db(DB_NAME);
+  try {
+  await client.connect();
+
+  const _id = req.params._id;
+  console.log(req.params);
+  const postById = await db.collection("posts").findOne({ _id });
+
+postById
+    ? res.status(200).json({ status: 200, _id, data: postById})
+    : res.status(404).json({ status: 404, _id, data: "Not Found" });}
+  catch (err) {
+    // if there is an error, console log it and send a 500 status
+    console.log(err.stack);
+    res.status(500).json({ status: 500, message: err.message });
+  } finally {
+  client.close();}
+};
+  module.exports = {addNewPost, getPosts, addComment, getPost};

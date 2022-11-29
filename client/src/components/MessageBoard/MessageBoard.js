@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useParams } from "react";
 import styled from "styled-components";
 import Post from "./PostForm";
 import {useAuth0} from "@auth0/auth0-react"
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import PostDetails from "./PostDetails";
+
 
 const MessageBoard = ({toggle, setToggle}) => {
 
@@ -14,6 +16,7 @@ const MessageBoard = ({toggle, setToggle}) => {
     const [postsFeed, setPostsFeed] = useState({})
     const [postState, setPostState] = useState(null)
     const [status, setStatus] = useState("loading...")
+    const [postId, setPostId] = useState(null)
   const showPost = () => {
  
     fetch("/posts")
@@ -26,6 +29,7 @@ const MessageBoard = ({toggle, setToggle}) => {
         setPostState(data);
       // console.log(data.data);
         setPostsFeed(data);
+    
         setStatus("idle");
       
       }
@@ -56,7 +60,17 @@ const MessageBoard = ({toggle, setToggle}) => {
     
       
         {postState && postState.data.map((obj)=> {
-            return <li key={obj._id}>{obj.time} {" "} Title:  {" "} {obj.title}  {" "} Content: {" "} {obj.content}</li>
+            return (
+          
+            <li 
+            key={obj._id}>
+                <Link to={`/postdetails/${obj._id}`}>
+                {obj.time} {" "} Title:  {" "} {obj.title}  {" "} Content: {" "} {obj.content}
+                </Link> 
+             {/* { setPostId= obj.id} */}
+                </li> 
+                
+            )
          })
          
          }

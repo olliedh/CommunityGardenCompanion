@@ -2,30 +2,30 @@ import { useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import { useAuth0 } from "@auth0/auth0-react";
-const Comment = ({showPost}) =>{
+const Comment = ({ postId}) =>{
 
-    const [postData, setPostData] = useState(null)
-   const [toggle, setToggle] = useState(false)
+    const [commentData, setCommentData] = useState(null)
+  //  const [toggle, setToggle] = useState(false)
    const { user, isAuthenticated } = useAuth0();
-    const postHandler = (e) => {
+    const commentHandler = (e) => {
         e.preventDefault()
-     console.log(postData)
-     setPostData({title: "", content: ""});
-        fetch("/post/newpost", {
+     console.log(commentData)
+     setCommentData({title: "", content: ""});
+        fetch(`/post/comment`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ content:postData.content, time:moment().format('llll'), userId: user.email, name: user.name}),
+            body: JSON.stringify({ _id:postId,  content:commentData.content, time:moment().format('llll'), userId: user.email, name: user.name}),
           })
             .then((res) => res.json())
             .then((data) => {
               console.log("Success! :", data);
       
            
-              showPost();
+          
             //   setCharacterCount(280);
-              setToggle(!toggle);
+              // setToggle(!toggle);
             })
             .catch((error) => {
               console.log("Error! :", error);
@@ -36,23 +36,23 @@ const Comment = ({showPost}) =>{
 
     const changeHandler = (e)=>{
      
-        setPostData({...postData,[e.target.name]:e.target.value})
+        setCommentData({...commentData,[e.target.name]:e.target.value})
     }
     return(
         <>
         <Wrapper>
 
-        <StyledForm onSubmit={postHandler} >
+        <StyledForm onSubmit={commentHandler} >
    
            
-            <label >Content</label>
+            <label >Add a reply: </label>
             <textarea name="content"
-             value={postData?.content} 
+             value={commentData?.content} 
              id="" cols="30" rows="10" onChange={changeHandler}></textarea>
 
           
 
-            <button  type="submit" disabled={postData?  false : true}>Post</button>
+            <button  type="submit" disabled={commentData?  false : true}>Comment</button>
          
 
         </StyledForm>

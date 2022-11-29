@@ -41,17 +41,9 @@ const Post = ({showPost}) =>{
     return(
         <>
         <Wrapper>
-
+        <h3>Make a new post</h3>
         <StyledForm onSubmit={postHandler} >
-        {/* <label >Topic</label>
-            <div>
-            <label >Tips</label>
-            <input type="radio" name="topic" value="tips" onChange={changeHandler}  />
-            <label >Trades</label>
-            <input type="radio" name="topic" value="trades" onChange={changeHandler} />
-            <label >General</label>
-            <input type="radio" value="general" name="topic" onChange={changeHandler} />
-            </div> */}
+        
             <label >Title</label>
             <input type="text" 
             value={postData?.title} 
