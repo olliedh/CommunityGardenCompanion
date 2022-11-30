@@ -1,20 +1,15 @@
-import Comment from "./comment";
+import Comment from "./CommentForm";
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-const PostDetails = () => {
+const PostDetails = ({toggle, setToggle}) => {
 
 
 
-    // const postHandler = (e) => {
-    //     e.preventDefault();
-
-
-    // }
+  
 
     const {postId }= useParams()
-    console.log(postId)
     const { user, isAuthenticated } = useAuth0();
     const [postState, setPostState] = useState(null)
     const [status, setStatus] = useState("loading...")
@@ -45,7 +40,7 @@ const PostDetails = () => {
 
   useEffect(() => {
     showPost()
-  }, [postId]);
+  }, [postId, toggle]);
     
     return ( <>
      {status === "loading..." ? (
@@ -61,9 +56,33 @@ const PostDetails = () => {
     <div>{`Name: ${postState.name}`}</div>
 
     <div>{`time: ${postState.time}`}</div>
+  <ul>
+  {   postState.comments.length > 0 &&  <h4>Comments</h4>}
+    {
+      postState.comments.length > 0 && 
+      postState.comments.map((obj)=> {
+        return (
+      
+        <li 
+        key={obj.commentId}>
+                <p>{obj.content} </p>
+               <div> <span>Name: {" "} {obj.name} {"     "} </span>
+                <span>Posted on: {" "} {obj.time}</span> 
+                </div>
+                {/* </StyledPostList> */}
+            {/* </Link>  */}
+         {/* { setPostId= obj.id} */}
+            </li> 
+            
+        )
+     })
+     
 
+    }
+    </ul>
 
-    <Comment postId={postId}/>
+    {isAuthenticated &&    <Comment postId={postId} showPost={showPost}/>} 
+ 
     </ContentBox>) }
     </> );
 }
@@ -73,5 +92,5 @@ export default PostDetails;
 const ContentBox = styled.div`
 display: flex;
 flex-direction: column;
-margin: 2% 5% 2% 5%;
+margin: 2% 5% 130px 5%;
 `

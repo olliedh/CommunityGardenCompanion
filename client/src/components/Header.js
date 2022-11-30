@@ -11,6 +11,7 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.div`
-
+z-index: 2000;
 margin: 2%;
+margin-right: 10%;
 `

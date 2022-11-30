@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Post = ({showPost}) =>{
 
     const [postData, setPostData] = useState(null)
-   const [toggle, setToggle] = useState(false)
+  //  const [toggle, setToggle] = useState(false)
    const { user, isAuthenticated } = useAuth0();
     const postHandler = (e) => {
         e.preventDefault()
@@ -24,12 +24,12 @@ const Post = ({showPost}) =>{
       
            
               showPost();
-            //   setCharacterCount(280);
-              setToggle(!toggle);
+            
+              // setToggle(!toggle);
             })
             .catch((error) => {
               console.log("Error! :", error);
-            //   navigate("/posterror");
+            //  optional:  navigate("/posterror");
             });
         };
 
@@ -41,7 +41,7 @@ const Post = ({showPost}) =>{
     return(
         <>
         <Wrapper>
-        <h3>Make a new post</h3>
+        <h3>Post a new message</h3>
         <StyledForm onSubmit={postHandler} >
         
             <label >Title</label>
@@ -72,6 +72,7 @@ const Wrapper = styled.div`
 
 display: flex;
 flex-direction: column;
+min-width: 250px;
 margin: 2% 30% 2% 30%;
 
 

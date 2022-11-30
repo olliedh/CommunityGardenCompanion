@@ -2,7 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import { useAuth0 } from "@auth0/auth0-react";
-const Comment = ({ postId}) =>{
+
+
+const Comment = ({ postId, showPost}) =>{
 
     const [commentData, setCommentData] = useState(null)
   //  const [toggle, setToggle] = useState(false)
@@ -21,15 +23,14 @@ const Comment = ({ postId}) =>{
             .then((res) => res.json())
             .then((data) => {
               console.log("Success! :", data);
-      
-           
-          
-            //   setCharacterCount(280);
+              showPost();
               // setToggle(!toggle);
+          
+         
             })
             .catch((error) => {
               console.log("Error! :", error);
-            //   navigate("/posterror");
+            // optional:  navigate("/posterror");
             });
         };
 
@@ -44,8 +45,8 @@ const Comment = ({ postId}) =>{
 
         <StyledForm onSubmit={commentHandler} >
    
-           
-            <label >Add a reply: </label>
+           <h3> Add a commment: </h3>
+         
             <textarea name="content"
              value={commentData?.content} 
              id="" cols="30" rows="10" onChange={changeHandler}></textarea>
@@ -68,6 +69,7 @@ const Wrapper = styled.div`
 
 display: flex;
 flex-direction: column;
+min-width: 250px;
 margin: 2% 30% 2% 30%;
 
 

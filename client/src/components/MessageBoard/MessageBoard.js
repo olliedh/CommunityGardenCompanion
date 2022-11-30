@@ -65,7 +65,12 @@ const MessageBoard = ({toggle, setToggle}) => {
             <li 
             key={obj._id}>
                 <Link to={`/postdetails/${obj._id}`}>
-                {obj.time} {" "} Title:  {" "} {obj.title}  {" "} Content: {" "} {obj.content}
+                    <StyledPostList>
+                    <h4>{obj.title} </h4>
+                   <div> <span>Name: {" "} {obj.name} {"     "} </span>
+                    <span>Posted on: {" "} {obj.time}</span> 
+                    </div>
+                    </StyledPostList>
                 </Link> 
              {/* { setPostId= obj.id} */}
                 </li> 
@@ -93,6 +98,14 @@ export default MessageBoard;
 const ContentBox = styled.div`
 display: flex;
 flex-direction: column;
-margin: 2% 5% 2% 5%;
+margin: 2% 5% 130px 5%;
+
+`
+
+const StyledPostList = styled.div`
+display:flex;
+flex-direction: column;
+margin-bottom: 1rem;
+font-size: 0.9rem;
 
 `

@@ -213,6 +213,7 @@ const StyledTableWrap= styled.div`
 
 display: flex;
 justify-content: center;
+margin-bottom: 130px;
 `
 
 const Title = styled.h2`

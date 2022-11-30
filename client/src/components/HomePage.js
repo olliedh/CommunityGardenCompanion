@@ -56,9 +56,16 @@ const HomePage = () => {
 
         <p> Welcome to the Villeray Community Garden webpage!</p>
         {/* I would like to show today's date and min/ max daily temperature here */}
+        <WeatherContainer>
+        <LeftCloud src={require('./suncloud.png')} />
+        <WidgetDiv>
         {moment().format('MMMM Do YYYY')}
         <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
         <p>{weather && `Average temperature: ${average[0].temperature} °C`}</p>
+        </WidgetDiv>
+        <RightCloud src={require('./unnamed.png')} />
+        </WeatherContainer>
+        <StyledImage src={require('./flower2buds.png')} />
         </Wrapper>
 
         </>
@@ -69,6 +76,40 @@ export default HomePage;
 
 const Wrapper = styled.div` 
 margin: 3%;
+margin-bottom: 130px;
 
 
+`
+const StyledImage = styled.img`
+ height: auto; 
+    width: auto; 
+    max-height: 250px;
+position: -webkit-sticky; /* Safari */
+  position: fixed;
+ 
+bottom: 50px;
+  right: 2%;
+  z-index:999;
+`
+
+
+const WeatherContainer = styled.div`
+display: flex;
+
+`
+
+const WidgetDiv = styled.div`
+display: flex;
+flex-direction: column;
+margin: 1% 1% 1% 1%;
+`
+
+const LeftCloud = styled.img`
+max-height: 17vh;
+width: auto;
+`
+
+const RightCloud = styled.img`
+max-height: 17vh;
+width: auto;
 `

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+// import img from "../assets/flower2buds.png"
 const GlobalStyles = createGlobalStyle`
 
 /******************************************/
@@ -126,12 +126,21 @@ h1 {
     font-family: "hind", sans-serif;
 
   }
-  p, body {
+  p {
     color: var(--charleston-green);
     font-family: "hind", sans-serif;
-    background-color: var(--bone);
+  
   }
 
+
+  body {
+    color: var(--charleston-green);
+    font-family: "hind", sans-serif;
+  
+    background-color: var(--bone);
+ 
+
+  }
 table {
  border-collapse: collapse;
 }

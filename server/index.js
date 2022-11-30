@@ -9,11 +9,11 @@ const {
 
    getPost,
    addComment,
-//    editPost, 
-//    deletePost,
+   editPost, 
+   deletePost,
 //    editComment,
-//    deleteComment,
-//    addUser
+   deleteComment,
+
   } = require("./handlers");
 
 const port = 8000;
@@ -30,20 +30,23 @@ express()
 //get all posts from the database
  .get('/posts', getPosts)
 
-// // get one post 
-.get('/post/:_id', getPost)
+
 
 // //add a comment to a post
 .patch('/post/comment', addComment)
+// // get one post 
+.get('/post/:_id', getPost)
 
 // //edit a post that was authored by the logged in user
-// .patch('/post/:_id', editPost)
+.patch('/post/:_id', editPost)
+
 // //delete a post, same logic as above
-// .delete('/post/:_id', deletePost)
+.delete('/post/:_id', deletePost)
+
 // //edit a comment that was authored by the logged in user
 // .patch('/post/:_id/comment/:_id', editComment)
 // //delete a comment 
-// .patch('/post/:_idcomment/:_id', deleteComment)`
+.patch('/post/:_id/comment/:commentId', deleteComment)
 
 
 

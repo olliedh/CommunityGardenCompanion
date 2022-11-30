@@ -4,7 +4,6 @@ const Footer = () => {
     return (  <>
     <Wrapper>
 
-hi
     </Wrapper>
     </>);
 }
@@ -34,8 +33,14 @@ margin-top: 1rem; */
  
   height: 120px;
   //try later to make the waves less pronounced with transforms
-  /* transform: scale(2, 0.5); */
-  /* transform: translate(0, 75%); */
-  /* maring: 15px;  */ 
- 
+
+
+
+  margin-top: 5rem;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 `
+
