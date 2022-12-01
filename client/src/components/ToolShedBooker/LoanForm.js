@@ -5,6 +5,7 @@ import Checkbox from "./CheckBox";
 import styled from "styled-components";
 
 const LoanForm = (toggle, setToggle) => {
+    
     //getting the user identity and login status
     const {user, isAuthenticated} = useAuth0()
     //state will change to loading when fetch worked to conditionally render the form
@@ -12,7 +13,7 @@ const LoanForm = (toggle, setToggle) => {
     ///////////state that receives the inventory  ////////should there just be one state for the form?
     const [toolsState, setToolsState] = useState([]);
     ///state that will take in tools as array elements when
-    const [selectedTools, setSelectedTools] = useState([])
+    const [selectedTools, setSelectedTools] = useState({})
     //or should I be using this type of state instead???
     // const [checkedState, setCheckedState] = useState(
     // new Array(toolsState.length).fill(false)
@@ -25,6 +26,7 @@ const LoanForm = (toggle, setToggle) => {
     //disabling the submit until the form is filled
     const [disabled, setDisabled] = useState(true);
 
+    //fetch that loads the tool list data as checkboxes
     const showTools = () => {
         fetch(`/tools`)
         .then((res) => res.json())
@@ -48,29 +50,58 @@ const LoanForm = (toggle, setToggle) => {
         
     }
     
+    //showtools is called on initial load only
     useEffect(() => {
         showTools()
     }, []);
     
+    //enables the submit button only if a date and minimum 1 tool were chosen
     useEffect(() => {
-        selectedTools.length === 0 && selectedDate === null
-          ? setDisabled(true)
-          : setDisabled(false);
-      }, [selectedTools, selectedDate, setDisabled]);
+        Object.values(selectedTools).length > 0 && selectedDate !== null
+          ? setDisabled(false)
+          : setDisabled(true);
+      }, [selectedTools, selectedDate]);
     
-      console.log(toolsState)
-    const handleChange = (value, name) => {
-      // setFormData({ ...formData, [name]: value });
-      // setErrMessage("");
+    //   console.log(toolsState)
+
+
+    //when the item is selected, it should 
+    //1. be added to the selected tools array
+    //2. change toolsState.isAvailable value to false. 
+
+    const handleChange = (e) => {
+
+        console.log(e.target.checked)
+        //how do I grab the checkbox value or name to push into the new state?
+    if (e.target.checked === true) {
+
+        setSelectedTools({ ...selectedTools, [e.target.name]: e.target.name})
+
+    } else {
+        const {[e.target.name]: _, ...rest} = selectedTools 
+        //This command takes everything from selectedTools (that is not e.target.name) and places it inside the rest variable
+        setSelectedTools(rest)
+        
+    }
     };
-  
+
+  console.log(selectedTools);
+
+  //Submit should :
+  //1. post an object containing user.name, user.email, selectedDate, selectedTools
+  //2. update the inventory items that have been selected to isAvailable: false
+  //3. return the reservation information for confirmation
     const handleSubmit = (e) => {
   
         e.preventDefault()
   
     }
+
+
     return ( <>
-     {status === "loading..." ? (
+
+     { //fix the loading/conditional display here
+     status === "loading..." ? (
         <div>
         loading...
         </div>
@@ -81,20 +112,27 @@ const LoanForm = (toggle, setToggle) => {
     </h2>
 
     <Form onSubmit={handleSubmit}>
+        <ChoicesDiv>   <LoanCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
         <ul>
+
         {toolsState && toolsState.map((obj)=>{
         
         return    <ToolLi  key={obj._id}>
-              
-             <span>  <Checkbox  label={`  ${obj.tool}`} value={false} handleChange={handleChange} /> </span>  <ImgSpan><ToolImg src={obj.imgSrc}></ToolImg></ImgSpan>
+              {/* make the handlechange function push the checked items with setSelectedTools */}
+             <span>   <input type="checkbox" name={obj.tool} value={obj.tool}  onChange={handleChange} />
+        
+        <label>
+        {`tool type: ${obj.tool}`}
+      </label> </span>  <ImgSpan><ToolImg src={obj.imgSrc}></ToolImg></ImgSpan>
                 
                   </ToolLi>
+                  
 
         }) }
          </ul>
+         </ChoicesDiv> 
 
-        <LoanCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
-        <button  type="submit" disabled={disabled}>Post</button>
+        <button  type="submit" disabled={disabled}>Create Reservation</button>
     </Form>
     </FormWrapper>
     
@@ -131,6 +169,7 @@ min-width: 200px;
 justify-content: space-between;
 padding-left: 0;
 margin-bottom: 2%;
+padding-top: 5%;
 
 `;
 
@@ -148,4 +187,10 @@ const Form = styled.form`
 display:flex;
 flex-direction: column;
 align-items:center;
+`
+
+const ChoicesDiv = styled.div`
+
+display: flex;
+flex-wrap:wrap;
 `

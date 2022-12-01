@@ -18,7 +18,7 @@ const {v4:uuidv4} = require("uuid");
 const { inventory } = require("./inventory");
 //endpoint handlers start here //
 
-// endpoint was tested
+// Endpoint works
 const getTools = async (req, res) => {
     // creates a new client
     const client = new MongoClient(MONGO_URI, options);
@@ -56,9 +56,9 @@ const getTools = async (req, res) => {
 //-----------------------------------------------------\\
 //modify this endpoint to post a new reservation and update inventory items
 
-// const postOrder = async (req, res) => {
+// const postReservation = async (req, res) => {
 //     // get the order info from the body object
-//     const { _id, name, email, address, purchasedCart, date, phoneNumber } =
+//     const { name, email, tools, date } =
 //       req.body;
   
 //     // create a new client
@@ -68,18 +68,18 @@ const getTools = async (req, res) => {
 //       await client.connect();
 //       // declare the database
 //       const db = client.db(DB_NAME);
-//       // create a new order object
+//       // create a new reservation object
 //       const order = {
 //         _id: Number(_id),
 //         name,
 //         email,
-//         address,
-//         purchasedCart,
+//         tools,
 //         date,
-//         phoneNumber,
+//         
 //       };
-//       // insert the order into the "orders" collection
-//       await db.collection("orders").insertOne(order);
+//       // insert the reservation into the "reservations" collection
+//       await db.collection("reservations").insertOne(reservation);
+//updated up to here
 //       // clear the cart
 //       await db.collection("cart").updateOne(
 //         {}, // filter

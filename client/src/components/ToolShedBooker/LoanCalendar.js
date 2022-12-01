@@ -3,14 +3,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 //github google of the css
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+
 
 
 const LoanCalendar = ({selectedDate, setSelectedDate}) => {
 
  
     return (
-        <div>
-      <p>Select a date for your reservation:</p>
+        <DateSelectDiv>
+      <p>Select Reservation Date</p>
       <DatePicker 
       selected={selectedDate} 
       onChange={date => setSelectedDate(date)} 
@@ -18,8 +21,12 @@ const LoanCalendar = ({selectedDate, setSelectedDate}) => {
       minDate={new Date()}
       />
 
-        </div>
+        </DateSelectDiv>
     );
 }
  
 export default LoanCalendar;
+
+const DateSelectDiv = styled.div`
+text-align: center;
+`

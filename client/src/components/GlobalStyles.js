@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Checkbox from "./ToolShedBooker/CheckBox";
 // import img from "../assets/flower2buds.png"
 const GlobalStyles = createGlobalStyle`
 
@@ -182,6 +183,10 @@ th {
  color: var(--hunter-green);
 }
 
+
+
 `
+
+
 
 export default GlobalStyles;
