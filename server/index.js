@@ -19,7 +19,8 @@ const {
   const {
 
     getTools,
-    addNewReservation
+    addNewReservation, 
+    test
   } = require("./ToolshedHandlers")
 
 const port = 8000;

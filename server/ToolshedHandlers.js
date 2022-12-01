@@ -79,22 +79,17 @@ const addNewReservation = async (req, res) => {
         created
         
       };
-//       // insert the reservation into the "reservations" collection
-      await db.collection("reservations").insertOne(reservation);
-//updated up to here
-//       // clear the cart
-//       await db.collection("cart").updateOne(
-//         {}, // filter
-//         {
-//           $set: {
-//             cartItems: [], // update
-//             totalPrice: 0,
-//             numOfCartItems: 0,
-//           },
-//         }
-//       );
-//       // grab the whole cart object from the "cart" collection to send it back to the front end
-//       const cart = await db.collection("cart").findOne();
+      //       // insert the reservation into the "reservations" collection
+      const result= await db.collection("reservations").insertOne(reservation);
+      //updated up to here
+      //       // update the tools array to 
+            // await db.collection("Inventory").update({tool= {$in :tools }} , $set:{isAvailable:false});
+        //       
+            // 
+            //updateMany({tool= {$in :tools }} , $set:{isAvailable:false})
+            //    
+            //       // get the reservation just created to send it back to the front end
+            const confirmation = await db.collection("reservations").findOne({_id});
 //       // send the updated cart
       res.status(200).json({ status: 200, data: reservation });
     } catch (err) {
@@ -106,6 +101,9 @@ const addNewReservation = async (req, res) => {
       client.close();
     }
   };
+const test=(req,res)=>{
+  const test = req.body
+  res.status(200).json({status:200 , data:test})
+}
 
-
-module.exports = {getTools, addNewReservation}
+module.exports = {getTools, addNewReservation, test}

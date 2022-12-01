@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Checkbox from "./CheckBox";
 import styled from "styled-components";
 import moment from "moment";
+import {useNavigate} from "react-router-dom"
 
 const LoanForm = (toggle, setToggle) => {
     
@@ -26,6 +27,7 @@ const LoanForm = (toggle, setToggle) => {
     const [errMessage, setErrMessage] = useState("");
     //disabling the submit until the form is filled
     const [disabled, setDisabled] = useState(true);
+    const navigate=useNavigate()
 
     //fetch that loads the tool list data as checkboxes
     const showTools = () => {
@@ -80,8 +82,8 @@ const LoanForm = (toggle, setToggle) => {
 
     } else {
         //This command takes everything from selectedTools (that is not e.target.name) and places it inside the rest variable
-        setSelectedTools(rest)
         const {[e.target.name]: _, ...rest} = selectedTools 
+        setSelectedTools(rest)
         
     }
     };
@@ -105,11 +107,11 @@ const LoanForm = (toggle, setToggle) => {
             .then((res) => res.json())
             .then((data) => {
               console.log("Success! :", data);
-      
+              navigate("/")
            
-            //   showPost();
+        //     //   showPost();
             
-              // setToggle(!toggle);
+        //       // setToggle(!toggle);
             })
             .catch((error) => {
               console.log("Error! :", error);
@@ -155,7 +157,7 @@ const LoanForm = (toggle, setToggle) => {
          </ul>
          </ChoicesDiv> 
 
-        <button  type="submit" disabled={disabled}>Create Reservation</button>
+        <button >Create Reservation</button>
     </Form>
     </FormWrapper>
     
