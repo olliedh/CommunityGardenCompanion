@@ -54,15 +54,16 @@ const HomePage = () => {
         <Wrapper>
        
 
-        <p> Welcome to the Villeray Community Garden webpage!</p>
+        <h3> Welcome to the Villeray Community Garden page!</h3>
         {/* I would like to show today's date and min/ max daily temperature here */}
         <WeatherContainer>
         <LeftCloud src={require('./suncloud.png')} />
         <WidgetDiv>
         {moment().format('MMMM Do YYYY')}
-        <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
         <p>{weather && `Average temperature: ${average[0].temperature} °C`}</p>
+        <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
         </WidgetDiv>
+       
         <RightCloud src={require('./unnamed.png')} />
         </WeatherContainer>
         <StyledImage src={require('./flower2buds.png')} />
@@ -95,6 +96,7 @@ bottom: 50px;
 
 const WeatherContainer = styled.div`
 display: flex;
+margin-top: 0.75%;
 
 `
 

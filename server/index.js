@@ -14,7 +14,12 @@ const {
 //    editComment,
    deleteComment,
 
-  } = require("./handlers");
+  } = require("./MessageHandlers");
+
+  const {
+
+    getTools
+  } = require("./ToolshedHandlers")
 
 const port = 8000;
 express()
@@ -48,6 +53,9 @@ express()
 // //delete a comment 
 .patch('/post/:_id/comment/:commentId', deleteComment)
 
+//toolshed handlers
+//get the inventory of tools
+.get('/tools', getTools)
 
 
     .listen(port, () => {

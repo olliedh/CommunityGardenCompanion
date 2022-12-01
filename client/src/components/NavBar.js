@@ -6,22 +6,23 @@ import {useAuth0} from "@auth0/auth0-react"
 import Profile from "./Profile";
 
 const NavBar = () => {
-    const {isAuthenticated} = useAuth0()
+    const {user, isAuthenticated} = useAuth0()
     return ( <>
     <Wrapper>
     <StyledNavLink to={"/"}>Home</StyledNavLink>
     
     <StyledNavLink to={"/plantingtabletest"}>Planting Chart</StyledNavLink>
 
-    {isAuthenticated &&  <StyledNavLink to={"/loanform"}>The Toolshed</StyledNavLink>}
+    {isAuthenticated &&  <StyledNavLink to={"/toolshed"}>The Toolshed</StyledNavLink>}
 
    
     <StyledNavLink to={"/messageboard"}>Message Board</StyledNavLink>
 
-    <StyledNavLink to={"/profile"}>Profile</StyledNavLink>
+    {/* <StyledNavLink to={"/profile"}>Profile</StyledNavLink> */}
 
+    <div width="200"> { isAuthenticated && `${user.name}  `} 
       {isAuthenticated? <LogoutButton/>:  <LoginButton/> }
-    
+      </div>
      
     </Wrapper>
     </> );
@@ -38,7 +39,8 @@ padding: 1% 3% 1% 3%;
 display: flex;
 justify-content: flex-end;
 align-items: center;
-gap: 10px;
+
+gap: 1%;
 
 
 

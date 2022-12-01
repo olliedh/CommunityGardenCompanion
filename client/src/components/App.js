@@ -14,10 +14,11 @@ import LogoutButton from "./LoginButton";
 import Profile from "./Profile";
 import PlantingTableTest from "./PlantingTableTest";
 import PostDetails from "./MessageBoard/PostDetails";
+import LoanForm from "./ToolShedBooker/LoanForm";
 
 const App = () => {
 
-  const [post, setPost] = useState({});
+
   const [toggle, setToggle] = useState(false)
   useEffect(()=> {
 
@@ -42,9 +43,10 @@ const App = () => {
             path="/"
             element={<HomePage />}
           />
-          <Route
-            path={"/postdetails/:postId"}
-            element={ <PostDetails  toggle={toggle} setToggle={setToggle}/>}
+       
+         <Route
+            path="/toolshed"
+            element={<LoanForm />}
           />
          
          <Route
@@ -58,6 +60,10 @@ const App = () => {
 <Route
             path="/plantingtabletest"
             element={ <PlantingTableTest/>}
+          />
+             <Route
+            path={"/postdetails/:postId"}
+            element={ <PostDetails  toggle={toggle} setToggle={setToggle}/>}
           />
 
           <Route path="" element={<h1>404: Oops!</h1>} />

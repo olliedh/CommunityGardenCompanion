@@ -46,9 +46,9 @@ const MessageBoard = ({toggle, setToggle}) => {
   }, [toggle]);
 
     return ( <> {status === "loading..." ? (
-        <div>
+        <StyledLoading>
         loading...
-        </div>
+        </StyledLoading>
       ) : (
     <ContentBox>
     <h2>Welcome to the Message Board</h2>
@@ -108,4 +108,13 @@ flex-direction: column;
 margin-bottom: 1rem;
 font-size: 0.9rem;
 
+`
+
+const StyledLoading = styled.div`
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 50vh;
 `

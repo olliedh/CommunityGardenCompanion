@@ -1,49 +1,37 @@
 const inventory = [
 
-    //simplify to 5 items, instead of numInStock use isAvailable: boolean
+    //simplify to 5 items, instead of isAvailable use isAvailable: boolean
 {
     "tool" : "wheelbarrow",
-    "numInStock" : "12"
+    "isAvailable" : "true",
+    "imgSrc" : "http://clipart-library.com/newhp/kissclipart-wheelbarrow-clipart-wheelbarrow-1007b04b096c9b4f.jpg"
 },
 
 {
     "tool" : "shovel",
-    "numInStock" : "20"
+    "isAvailable" : "true",
+    "imgSrc" : "http://clipart-library.com/images_k/shovel-transparent/shovel-transparent-18.png"
 },
 
-{
-    "tool" : "spade",
-    "numInStock" : "20"
-},
-
-{
-    "tool" : "fork",
-    "numInStock" : "20"
-},
-
-{
-    "tool" : "pruning sheers",
-    "numInStock" : "20"
-},
 
 {
     "tool" : "trowel",
-    "numInStock" : "20"
+    "isAvailable" : "false",
+    "imgSrc" : "http://clipart-library.com/newhp/371-3719022_gardening-trowel-transparent-image-garden-shovel-transparent-background.png"
 },
 
-{
-    "tool" : "garden hoe",
-    "numInStock" : "20"
-},
+
 
 {
-    "tool" : "garden rake",
-    "numInStock" : "20"
+    "tool" : "rake",
+    "isAvailable" : "true",
+    "imgSrc" : "http://clipart-library.com/newhp/kissclipart-rake-art-clip-clipart-rake-clip-art-e4d9312066593e3d.jpg"
 },
 
 {
     "tool" : "broadfork",
-    "numInStock" : "10"
+    "isAvailable" : "false",
+    "imgSrc" : "https://terradix.com/wp-content/uploads/2022/07/Amazon-Bild-Start.png"
 }
 
 ]

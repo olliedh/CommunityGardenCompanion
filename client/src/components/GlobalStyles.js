@@ -121,11 +121,21 @@ h1 {
     color: var(--forest-green-traditional);
   }
 
-  h2, h3, h4, h5, h6 {
+  h2 {
     color: #7ca982;
+    font-weight: 500;
     font-family: "hind", sans-serif;
+    /* text-shadow: 1px 1px 4px rgba(0,0,0,0.3); */
 
   }
+  h3, h4, h5, h6 {
+    color: var(--hunter-green);
+    font-weight: 500;
+    font-family: "hind", sans-serif;
+  ;
+
+  }
+
   p {
     color: var(--charleston-green);
     font-family: "hind", sans-serif;
@@ -169,7 +179,7 @@ tr{
 
 th {
  padding-left: 5px;
-
+ color: var(--hunter-green);
 }
 
 `

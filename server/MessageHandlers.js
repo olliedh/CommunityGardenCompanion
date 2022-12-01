@@ -1,4 +1,4 @@
-//need to simplify this and add an endpoint
+
 // import Mongo Client
 const { MongoClient, CommandFailedEvent } = require("mongodb");
 // create a constant to use for our Db name
