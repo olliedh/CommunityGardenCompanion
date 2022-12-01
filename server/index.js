@@ -19,7 +19,7 @@ const {
   const {
 
     getTools,
-    // addNewReservation
+    addNewReservation
   } = require("./ToolshedHandlers")
 
 const port = 8000;
@@ -59,7 +59,7 @@ express()
 .get('/tools', getTools)
 
 //post a reservation
-// .post('/reservations/newreservation', addNewReservation )
+.post('/reservations/newreservation', addNewReservation )
 
 
 

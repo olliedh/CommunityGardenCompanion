@@ -52,33 +52,35 @@ const getTools = async (req, res) => {
 
 
   //-----------------------------------------------------\\
-// function that posts a new order and clears the cart \\
+// function that posts a new reservation and clears the cart \\
 //-----------------------------------------------------\\
 //modify this endpoint to post a new reservation and update inventory items
 
-// const postReservation = async (req, res) => {
+const addNewReservation = async (req, res) => {
 //     // get the order info from the body object
-//     const { name, email, tools, date } =
-//       req.body;
-  
+    const { name, email, created, tools, datereserved } =
+      req.body;
+      const _id = uuidv4();
 //     // create a new client
-//     const client = new MongoClient(MONGO_URI, options);
-//     try {
-//       // connect to the client
-//       await client.connect();
-//       // declare the database
-//       const db = client.db(DB_NAME);
-//       // create a new reservation object
-//       const order = {
-//         _id: Number(_id),
-//         name,
-//         email,
-//         tools,
-//         date,
-//         
-//       };
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      // connect to the client
+      await client.connect();
+      // declare the database
+      const db = client.db(DB_NAME);
+      // create a new reservation object
+      const reservation = {
+        //compare to other use of uuid to verify
+        _id,
+        name,
+        email,
+        tools,
+        datereserved,
+        created
+        
+      };
 //       // insert the reservation into the "reservations" collection
-//       await db.collection("reservations").insertOne(reservation);
+      await db.collection("reservations").insertOne(reservation);
 //updated up to here
 //       // clear the cart
 //       await db.collection("cart").updateOne(
@@ -94,16 +96,16 @@ const getTools = async (req, res) => {
 //       // grab the whole cart object from the "cart" collection to send it back to the front end
 //       const cart = await db.collection("cart").findOne();
 //       // send the updated cart
-//       res.status(200).json({ status: 200, data: cart });
-//     } catch (err) {
-//       // if there is an error, console log it and send a 500 status
-//       console.log(err.stack);
-//       res.status(500).json({ status: 500, message: err.message });
-//     } finally {
-//       // close the connection
-//       client.close();
-//     }
-//   };
+      res.status(200).json({ status: 200, data: reservation });
+    } catch (err) {
+      // if there is an error, console log it and send a 500 status
+      console.log(err.stack);
+      res.status(500).json({ status: 500, message: err.message });
+    } finally {
+      // close the connection
+      client.close();
+    }
+  };
 
 
-module.exports = {getTools}
+module.exports = {getTools, addNewReservation}

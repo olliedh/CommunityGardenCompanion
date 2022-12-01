@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Checkbox from "./CheckBox";
 import styled from "styled-components";
+import moment from "moment";
 
 const LoanForm = (toggle, setToggle) => {
     
@@ -78,14 +79,14 @@ const LoanForm = (toggle, setToggle) => {
         setSelectedTools({ ...selectedTools, [e.target.name]: e.target.name})
 
     } else {
-        const {[e.target.name]: _, ...rest} = selectedTools 
         //This command takes everything from selectedTools (that is not e.target.name) and places it inside the rest variable
         setSelectedTools(rest)
+        const {[e.target.name]: _, ...rest} = selectedTools 
         
     }
     };
 
-  console.log(selectedTools);
+
 
   //Submit should :
   //1. post an object containing user.name, user.email, selectedDate, selectedTools
@@ -94,6 +95,28 @@ const LoanForm = (toggle, setToggle) => {
     const handleSubmit = (e) => {
   
         e.preventDefault()
+        fetch("/reservations/newreservation", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name:user.name, email:user.email, created:moment().format('llll'), tools: Object.values(selectedTools), datereserved: selectedDate}),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("Success! :", data);
+      
+           
+            //   showPost();
+            
+              // setToggle(!toggle);
+            })
+            .catch((error) => {
+              console.log("Error! :", error);
+            //  optional:  navigate("/posterror");
+            });
+
+
   
     }
 
