@@ -16,10 +16,6 @@ const LoanForm = (toggle, setToggle) => {
     const [toolsState, setToolsState] = useState([]);
     ///state that will take in tools as array elements when
     const [selectedTools, setSelectedTools] = useState({})
-    //or should I be using this type of state instead???
-    // const [checkedState, setCheckedState] = useState(
-    // new Array(toolsState.length).fill(false)
-    // );
     //state of date selection, lifted from loancalendar child, passed down
     const [selectedDate, setSelectedDate] = useState(null);
     //////////////////////////////////////////////////////////////////////
@@ -65,7 +61,7 @@ const LoanForm = (toggle, setToggle) => {
           : setDisabled(true);
       }, [selectedTools, selectedDate]);
     
-    //   console.log(toolsState)
+console.log(selectedDate)
 
 
     //when the item is selected, it should 
@@ -148,7 +144,9 @@ const LoanForm = (toggle, setToggle) => {
         
         <label>
         {`tool type: ${obj.tool}`}
-      </label> </span>  <ImgSpan><ToolImg src={obj.imgSrc}></ToolImg></ImgSpan>
+      </label> </span>  <ImgSpan><ToolImg src={obj.imgSrc} alt={`${obj.tool}`}></ToolImg></ImgSpan>
+      
+                    
                 
                   </ToolLi>
                   
@@ -157,7 +155,7 @@ const LoanForm = (toggle, setToggle) => {
          </ul>
          </ChoicesDiv> 
 
-        <button >Create Reservation</button>
+        <button disabled={disabled}>Create Reservation</button>
     </Form>
     </FormWrapper>
     
