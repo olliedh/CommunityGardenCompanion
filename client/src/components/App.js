@@ -16,6 +16,7 @@ import PlantingTableTest from "./PlantingTableTest";
 import PostDetails from "./MessageBoard/PostDetails";
 import LoanForm from "./ToolShedBooker/LoanForm";
 import LoanConfirmation from "./ToolShedBooker/LoanConfirmation";
+import EditPost from "./MessageBoard/EditPost";
 
 
 const App = () => {
@@ -70,6 +71,10 @@ const App = () => {
             element={ <PostDetails  toggle={toggle} setToggle={setToggle}/>}
           />
 
+<Route
+            path={"/editpost/:postId"}
+            element={ <EditPost  toggle={toggle} setToggle={setToggle}/>}
+          />
 <Route
             path={"/loanconfirmation/:id"}
             element={ <LoanConfirmation  loanDetails={loanDetails}/>}

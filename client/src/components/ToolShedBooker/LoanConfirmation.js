@@ -15,7 +15,7 @@ const LoanConfirmation = ({loanDetails}) => {
                     
                     <p> Your Name: {loanDetails.name}</p>
                     <p>  Your Email: {loanDetails.email}</p>
-                    <p> Reserved date: {loanDetails.datereserved}</p>
+                    <p> Reserved date: <moment format="DD/MM/YYYY">{loanDetails.datereserved}</moment></p>
                     <p> Tools reserved: </p>
                     {loanDetails?.tools.map( (tool) => {
 

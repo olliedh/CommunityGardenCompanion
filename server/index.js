@@ -45,7 +45,7 @@ express()
 .get('/post/:_id', getPost)
 
 // //edit a post that was authored by the logged in user
-.patch('/post/:_id', editPost)
+.patch('/post/', editPost)
 
 // //delete a post, same logic as above
 .delete('/post', deletePost)

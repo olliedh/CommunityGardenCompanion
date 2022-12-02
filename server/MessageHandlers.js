@@ -201,7 +201,7 @@ try {
 
 
 //THIS ENDPOINT WORKS
-//edit a post - worried this will be difficult to implement in the front end
+//edit a post 
 const editPost = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
 
@@ -211,7 +211,7 @@ const editPost = async (req, res) => {
       // declare the database
       const db = client.db(DB_NAME);
 
-  const _id = req.params._id;
+  const _id = req.body._id;
 
   const query = { _id };
   console.log("this one is the query ", query);
@@ -220,6 +220,7 @@ const editPost = async (req, res) => {
     $set: {
       title: req.body.title,
       content: req.body.content,
+      timeofedit: req.body.timeofedit
     },
   };
   const update = await db.collection("posts").updateOne(query, newValue);

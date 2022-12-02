@@ -2,12 +2,13 @@ import React, { useState, useEffect, useParams } from "react";
 import styled from "styled-components";
 import Post from "./PostForm";
 import {useAuth0} from "@auth0/auth0-react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PostDetails from "./PostDetails";
+import EditPost from "./EditPost";
 
 
 const MessageBoard = ({toggle, setToggle}) => {
-
+const navigate = useNavigate()
     const {user, isAuthenticated} = useAuth0()
     // const postHandler = (e) => {
     //     e.preventDefault();
@@ -48,6 +49,10 @@ const MessageBoard = ({toggle, setToggle}) => {
     showPost()
   }, [toggle]);
 
+  const handleEdit = (obj) => {
+    navigate(`/editpost/${obj._id}`)
+        
+  }
 
 
   const handleDelete = (obj) => {
@@ -80,6 +85,7 @@ const MessageBoard = ({toggle, setToggle}) => {
         console.log(err);
       });
 
+   
   
   }
     return ( <> {status === "loading..." ? (
@@ -112,6 +118,7 @@ const MessageBoard = ({toggle, setToggle}) => {
           
                 </li> 
                {user && (user.email === obj.userId? <button onClick={()=> handleDelete(obj)}>Delete</button> : "")}
+               {user && (user.email === obj.userId? <button onClick={()=> handleEdit(obj)}>Edit</button> : "")}
             </React.Fragment>
                 
             )
