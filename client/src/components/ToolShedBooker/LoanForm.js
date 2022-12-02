@@ -5,6 +5,7 @@ import Checkbox from "./CheckBox";
 import styled from "styled-components";
 import moment from "moment";
 import {useNavigate} from "react-router-dom"
+import { object } from "prop-types";
 
 const LoanForm = (toggle, setToggle) => {
     
@@ -130,7 +131,7 @@ console.log(selectedDate)
    ( <FormWrapper>
     <h2>
       Reserve tools from the shed!
-    </h2>
+    </h2> 
 
     <Form onSubmit={handleSubmit}>
         <ChoicesDiv>   <LoanCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
@@ -140,10 +141,12 @@ console.log(selectedDate)
         
         return    <ToolLi  key={obj._id}>
               {/* make the handlechange function push the checked items with setSelectedTools */}
-             <span>   <input type="checkbox" name={obj.tool} value={obj.tool}  onChange={handleChange} />
+             <span>   <input type="checkbox" name={obj.tool} value={obj.tool}  onChange={handleChange} 
+             disabled = {obj.isAvailable? false : true}
+/>
         
         <label>
-        {`tool type: ${obj.tool}`}
+        {` ${obj.tool}`}
       </label> </span>  <ImgSpan><ToolImg src={obj.imgSrc} alt={`${obj.tool}`}></ToolImg></ImgSpan>
       
                     
