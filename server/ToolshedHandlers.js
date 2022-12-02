@@ -86,7 +86,8 @@ const addNewReservation = async (req, res) => {
       
       // update the tools array to isAvailable = false
             
-           const updateInventory =  await db.collection("Inventory").updateMany({tool: {$in:tools} } ,[{ $set:{isAvailable:false}}]);
+           const updateInventory =  await db.collection("Inventory").updateMany({tool: {$in:tools} } 
+            ,[{ $set:{isAvailable:false}}]);
 
             // 
             //updateMany({tool= {$in :tools }} , $set:{isAvailable:false})

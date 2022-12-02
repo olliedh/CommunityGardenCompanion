@@ -15,11 +15,15 @@ import Profile from "./Profile";
 import PlantingTableTest from "./PlantingTableTest";
 import PostDetails from "./MessageBoard/PostDetails";
 import LoanForm from "./ToolShedBooker/LoanForm";
+import LoanConfirmation from "./ToolShedBooker/LoanConfirmation";
+
 
 const App = () => {
 
 
   const [toggle, setToggle] = useState(false)
+  const [loanDetails, setLoanDetails ] = useState(null)
+
   useEffect(()=> {
 
     fetch("http://api.openweathermap.org/data/2.5/forecast?lat=45.5088&lon=-73.554&appid=498b5bd5209a45fb40c5dfde11edf05c")
@@ -46,7 +50,7 @@ const App = () => {
        
          <Route
             path="/toolshed"
-            element={<LoanForm />}
+            element={<LoanForm setLoanDetails={setLoanDetails}/>}
           />
          
          <Route
@@ -66,6 +70,10 @@ const App = () => {
             element={ <PostDetails  toggle={toggle} setToggle={setToggle}/>}
           />
 
+<Route
+            path={"/loanconfirmation/:id"}
+            element={ <LoanConfirmation  loanDetails={loanDetails}/>}
+          />
           <Route path="" element={<h1>404: Oops!</h1>} />
         </Routes>
         </MainBox>

@@ -48,7 +48,7 @@ express()
 .patch('/post/:_id', editPost)
 
 // //delete a post, same logic as above
-.delete('/post/:_id', deletePost)
+.delete('/post', deletePost)
 
 // //edit a comment that was authored by the logged in user
 // .patch('/post/:_id/comment/:_id', editComment)

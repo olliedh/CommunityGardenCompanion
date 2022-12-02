@@ -1,4 +1,4 @@
-import { useState, useEffect, useParams } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import styled from "styled-components";
 import Post from "./PostForm";
 import {useAuth0} from "@auth0/auth0-react"
@@ -8,7 +8,7 @@ import PostDetails from "./PostDetails";
 
 const MessageBoard = ({toggle, setToggle}) => {
 
-    const {isAuthenticated} = useAuth0()
+    const {user, isAuthenticated} = useAuth0()
     // const postHandler = (e) => {
     //     e.preventDefault();
 
@@ -17,6 +17,8 @@ const MessageBoard = ({toggle, setToggle}) => {
     const [postState, setPostState] = useState(null)
     const [status, setStatus] = useState("loading...")
     const [postId, setPostId] = useState(null)
+
+   
   const showPost = () => {
  
     fetch("/posts")
@@ -31,6 +33,7 @@ const MessageBoard = ({toggle, setToggle}) => {
         setPostsFeed(data);
     
         setStatus("idle");
+        console.log(data.data)
       
       }
     })
@@ -45,6 +48,40 @@ const MessageBoard = ({toggle, setToggle}) => {
     showPost()
   }, [toggle]);
 
+
+
+  const handleDelete = (obj) => {
+ console.log(obj)
+    fetch(`/post`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: obj._id
+       
+
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+ 
+         console.log(data);
+        setToggle(!toggle);
+       
+        // setLoading(false);
+        // dispatch({
+        //   type: "FINISHED_FETCH",
+        //   data: data.data,
+        // });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  
+  }
     return ( <> {status === "loading..." ? (
         <StyledLoading>
         loading...
@@ -61,9 +98,9 @@ const MessageBoard = ({toggle, setToggle}) => {
       
         {postState && postState.data.map((obj)=> {
             return (
-          
+          <React.Fragment  key={obj._id}>
             <li 
-            key={obj._id}>
+           >
                 <Link to={`/postdetails/${obj._id}`}>
                     <StyledPostList>
                     <h4>{obj.title} </h4>
@@ -72,8 +109,10 @@ const MessageBoard = ({toggle, setToggle}) => {
                     </div>
                     </StyledPostList>
                 </Link> 
-             {/* { setPostId= obj.id} */}
+          
                 </li> 
+               {user && (user.email === obj.userId? <button onClick={()=> handleDelete(obj)}>Delete</button> : "")}
+            </React.Fragment>
                 
             )
          })

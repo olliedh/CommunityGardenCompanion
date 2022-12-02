@@ -129,14 +129,21 @@ h1 {
     /* text-shadow: 1px 1px 4px rgba(0,0,0,0.3); */
 
   }
-  h3, h4, h5, h6 {
+  h3{
     color: var(--hunter-green);
     font-weight: 500;
-    font-family: "hind", sans-serif;
-  ;
+    font-family: "MuseoModerno", sans-serif;
+  
 
   }
 
+  h4, h5, h6 {
+    color: var(--hunter-green);
+    font-weight: 500;
+    font-family: "hind", sans-serif;
+
+
+  }
   p {
     color: var(--charleston-green);
     font-family: "hind", sans-serif;
@@ -145,6 +152,7 @@ h1 {
 
 
   body {
+    //change later to bone?
     color: var(--charleston-green);
     font-family: "hind", sans-serif;
   
@@ -183,8 +191,25 @@ th {
  color: var(--hunter-green);
 }
 
+a {
+  color: var(--liver-organ);
+ font-weight: 500;
+ 
+}
 
+a:visited {
 
+  color: var(--metallic-sunburst);
+}
+
+a:hover{
+  color: var(--mango-tango);
+
+a:active{
+  color: var(--mango-tango);
+ 
+}
+}
 `
 
 

@@ -43,23 +43,23 @@ const PostDetails = ({toggle, setToggle}) => {
   }, [postId, toggle]);
     
     return ( <>
-     {status === "loading..." ? (
+     {(status === "loading..." || !postState)? (
         <div>
         loading...
         </div>
       ) : (
   <ContentBox>
-    <div>{`Subject: ${postState.title}`}</div>
+    <h3>{`Subject: ${postState.title}`}</h3>
   
-    <div>{`Message: ${postState.content}`}</div>
+    <p>{`${postState.content}`}</p>
 
-    <div>{`Name: ${postState.name}`}</div>
+    <p>{`By: ${postState.name}, ${postState.userId}`}</p>
 
-    <div>{`time: ${postState.time}`}</div>
+    <p>{`Posted: ${postState.time}`}</p>
   <ul>
-  {   postState.comments.length > 0 &&  <h4>Comments</h4>}
+  {   postState.comments.length  &&  <h4>Comments</h4>}
     {
-      postState.comments.length > 0 && 
+      postState.comments.length && 
       postState.comments.map((obj)=> {
         return (
       

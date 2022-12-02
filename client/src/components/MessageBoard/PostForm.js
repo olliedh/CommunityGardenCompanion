@@ -47,11 +47,13 @@ const Post = ({showPost}) =>{
             <label >Title</label>
             <input type="text" 
             value={postData?.title} 
+            placeholder="Subject"
             name="title" onChange={changeHandler} />
 
             <label >Content</label>
             <textarea name="content"
              value={postData?.content} 
+             placeholder="Message"
              id="" cols="30" rows="10" onChange={changeHandler}></textarea>
 
           

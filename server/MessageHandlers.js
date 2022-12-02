@@ -170,7 +170,7 @@ const addComment= async (req, res) => {
 //THIS ENDPOINT WORKS
 //delete one post (will also delete all comments)
 const deletePost = async (req, res) => {
-  const { _id } = req.params;
+  const { _id } = req.body;
   const client = new MongoClient(MONGO_URI, options);
 try {
       // connect to the client
@@ -188,7 +188,7 @@ try {
       message: `entry successfully deleted`,
     });
   } else {
-    res.status(400).json({ status: 404, error: "entry was not deleted" });
+    res.status(404).json({ status: 404, error: "entry was not deleted" });
   }} catch (err) {
     // if there is an error, console log it and send a 500 status
     console.log(err.stack);

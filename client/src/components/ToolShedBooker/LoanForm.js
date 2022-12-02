@@ -5,9 +5,9 @@ import Checkbox from "./CheckBox";
 import styled from "styled-components";
 import moment from "moment";
 import {useNavigate} from "react-router-dom"
-import { object } from "prop-types";
 
-const LoanForm = (toggle, setToggle) => {
+
+const LoanForm = ( {setLoanDetails}) => {
     
     //getting the user identity and login status
     const {user, isAuthenticated} = useAuth0()
@@ -20,8 +20,6 @@ const LoanForm = (toggle, setToggle) => {
     //state of date selection, lifted from loancalendar child, passed down
     const [selectedDate, setSelectedDate] = useState(null);
     //////////////////////////////////////////////////////////////////////
-    //show different error messages depending on which tool is unavailable- does this happen based on the get?
-    const [errMessage, setErrMessage] = useState("");
     //disabling the submit until the form is filled
     const [disabled, setDisabled] = useState(true);
     const navigate=useNavigate()
@@ -31,7 +29,7 @@ const LoanForm = (toggle, setToggle) => {
         fetch(`/tools`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+         
           if (data.status === 400 || data.status === 500) {
               //is data.message relevant here?
               throw new Error(data.message);
@@ -55,14 +53,20 @@ const LoanForm = (toggle, setToggle) => {
         showTools()
     }, []);
     
-    //enables the submit button only if a date and minimum 1 tool were chosen
+    // enables the submit button only if a date and minimum 1 tool were chosen
     useEffect(() => {
         Object.values(selectedTools).length > 0 && selectedDate !== null
           ? setDisabled(false)
           : setDisabled(true);
-      }, [selectedTools, selectedDate]);
+      }, [selectedTools]);
     
-console.log(selectedDate)
+        useEffect(() => {
+        Object.values(selectedTools).length > 0 && selectedDate !== null
+          ? setDisabled(false)
+          : setDisabled(true);
+      }, [selectedDate]);
+
+
 
 
     //when the item is selected, it should 
@@ -71,7 +75,7 @@ console.log(selectedDate)
 
     const handleChange = (e) => {
 
-        console.log(e.target.checked)
+    
         //how do I grab the checkbox value or name to push into the new state?
     if (e.target.checked === true) {
 
@@ -87,16 +91,18 @@ console.log(selectedDate)
 
 
 
-  //Submit should :
-  //1. post an object containing user.name, user.email, selectedDate, selectedTools
-  //2. update the inventory items that have been selected to isAvailable: false
-  //3. return the reservation information for confirmation
+  //Submit should post an object containing user.name, user.email, selectedDate, selectedTools
+  //endpoint in back: 1. updates the inventory items that have been selected to isAvailable: false
+  //2. returns the reservation information for confirmation
     const handleSubmit = (e) => {
-  
-        e.preventDefault()
+        console.log(disabled)
+        e.preventDefault();
+        setDisabled(true)
+       
         fetch("/reservations/newreservation", {
             method: "POST",
             headers: {
+              Accept: "application/json",
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ name:user.name, email:user.email, created:moment().format('llll'), tools: Object.values(selectedTools), datereserved: selectedDate}),
@@ -104,7 +110,10 @@ console.log(selectedDate)
             .then((res) => res.json())
             .then((data) => {
               console.log("Success! :", data);
-              navigate("/")
+              setLoanDetails(data.data)
+              console.log(data.data)
+              navigate(`/loanconfirmation/${data.data._id}`)
+
            
         //     //   showPost();
             
@@ -116,7 +125,7 @@ console.log(selectedDate)
             });
 
 
-  
+    console.log(disabled)
     }
 
 
@@ -157,8 +166,8 @@ console.log(selectedDate)
         }) }
          </ul>
          </ChoicesDiv> 
-
-        <button disabled={disabled}>Create Reservation</button>
+           
+        <button type="submit" disabled={disabled}>Create Reservation</button>
     </Form>
     </FormWrapper>
     
@@ -205,6 +214,9 @@ display: flex;
 flex-direction: column;
 
 width: 80px;
+background-color: whitesmoke;
+padding:2px; 
+ border-radius: 2px;
 
 `;
 
