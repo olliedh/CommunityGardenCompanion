@@ -82,16 +82,25 @@ const addNewReservation = async (req, res) => {
       //       // insert the reservation into the "reservations" collection
       const result= await db.collection("reservations").insertOne(reservation);
       //updated up to here
-      //       // update the tools array to 
-            // await db.collection("Inventory").update({tool= {$in :tools }} , $set:{isAvailable:false});
-        //       
+      //      
+      
+      // update the tools array to isAvailable = false
+            
+           const updateInventory =  await db.collection("Inventory").updateMany({tool: {$in:tools} } ,[{ $set:{isAvailable:false}}]);
+
             // 
             //updateMany({tool= {$in :tools }} , $set:{isAvailable:false})
             //    
             //       // get the reservation just created to send it back to the front end
             const confirmation = await db.collection("reservations").findOne({_id});
 //       // send the updated cart
-      res.status(200).json({ status: 200, data: reservation });
+if (result) 
+   {  
+     res.status(200).json({ status: 200, data: confirmation, message: "success, reservation confirmed" });}
+     else {
+
+      res.status(400).json({status: 400, message: "not found", data: reservation})
+     }
     } catch (err) {
       // if there is an error, console log it and send a 500 status
       console.log(err.stack);
