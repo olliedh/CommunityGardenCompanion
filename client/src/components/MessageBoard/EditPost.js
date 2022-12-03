@@ -100,7 +100,7 @@ const EditPost = () =>{
 
           
 
-            <button  type="submit" disabled={postData?  false : true}>Post</button>
+            <button  type="submit" disabled={postData?  false : true}>Done</button>
          
 
         </StyledForm>
@@ -118,6 +118,7 @@ display: flex;
 flex-direction: column;
 min-width: 250px;
 margin: 2% 30% 2% 30%;
+margin-bottom: 150px;
 
 
 `

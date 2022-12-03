@@ -5,7 +5,7 @@ import {useAuth0} from "@auth0/auth0-react"
 import { Link, useNavigate } from "react-router-dom";
 import PostDetails from "./PostDetails";
 import EditPost from "./EditPost";
-
+import Spinner from "react-spinkit"
 
 const MessageBoard = ({toggle, setToggle}) => {
 const navigate = useNavigate()
@@ -89,9 +89,12 @@ const navigate = useNavigate()
   
   }
     return ( <> {status === "loading..." ? (
-        <StyledLoading>
-        loading...
-        </StyledLoading>
+      <SpinnerDiv>
+
+
+      <Spinner name="chasing-dots" color="#9a8939"/>
+
+        </SpinnerDiv>
       ) : (
     <ContentBox>
     <h2>Welcome to the Message Board</h2>
@@ -105,11 +108,12 @@ const navigate = useNavigate()
         {postState && postState.data.map((obj)=> {
             return (
           <React.Fragment  key={obj._id}>
+            <RowDiv>
             <li 
            >
                 <Link to={`/postdetails/${obj._id}`}>
                     <StyledPostList>
-                    <h4>{obj.title} </h4>
+                    <h4>{ `Subject: ${obj.title}`} </h4>
                    <div> <span>Name: {" "} {obj.name} {"     "} </span>
                     <span>Posted on: {" "} {obj.time}</span> 
                     </div>
@@ -119,6 +123,8 @@ const navigate = useNavigate()
                 </li> 
                {user && (user.email === obj.userId? <button onClick={()=> handleDelete(obj)}>Delete</button> : "")}
                {user && (user.email === obj.userId? <button onClick={()=> handleEdit(obj)}>Edit</button> : "")}
+
+               </RowDiv>
             </React.Fragment>
                 
             )
@@ -126,12 +132,13 @@ const navigate = useNavigate()
          
          }
     </ul>
-    <div>
+    <PostDiv>
    
+    {isAuthenticated && <Post showPost={showPost}/>} 
+
+    </PostDiv>
 
 
-    </div>
-   {isAuthenticated && <Post showPost={showPost}/>} 
 
     </ContentBox> 
     )}
@@ -144,7 +151,7 @@ export default MessageBoard;
 const ContentBox = styled.div`
 display: flex;
 flex-direction: column;
-margin: 2% 5% 130px 5%;
+margin: 2% 5% 150px 3%;
 
 `
 
@@ -156,11 +163,36 @@ font-size: 0.9rem;
 
 `
 
-const StyledLoading = styled.div`
+// const StyledLoading = styled.div`
+
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// align-items: center;
+// height: 50vh;
+// `
+
+
+
+const SpinnerDiv = styled.div`
+
+display:flex;
+flex-direction: column;
+
+justify-content: center;
+height: 45vh;
+margin-left: 10%;
+
+`
+
+const RowDiv = styled.div`
 
 display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 50vh;
+
+gap: 1%;
+`
+
+const    PostDiv = styled.div`
+
+
 `

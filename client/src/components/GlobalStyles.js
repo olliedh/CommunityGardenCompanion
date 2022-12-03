@@ -62,6 +62,10 @@ const GlobalStyles = createGlobalStyle`
 
   ol, ul {
     list-style: none;
+  
+    padding: 0;
+    list-style-type: none;
+
   }
 
   a:link {
@@ -113,6 +117,8 @@ a:active {
 --dark-jungle-green: hsla(178, 77%, 7%, 1);
 //night mode background->
 --raisin-black: hsla(244, 17%, 16%, 1);
+
+--mobile-width: "750px";
 }
 
 

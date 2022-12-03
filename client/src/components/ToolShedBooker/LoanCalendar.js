@@ -28,5 +28,6 @@ const LoanCalendar = ({selectedDate, setSelectedDate}) => {
 export default LoanCalendar;
 
 const DateSelectDiv = styled.div`
-text-align: center;
+/* text-align: center; */
+
 `

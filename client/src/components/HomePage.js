@@ -46,7 +46,7 @@ const HomePage = () => {
         average.push(avgObject);
 
       });
-      console.log(average);
+      console.log(typeof average[0].precipitation);
      
       }
     return ( 
@@ -63,9 +63,13 @@ const HomePage = () => {
         <p>{weather && `Average temperature: ${average[0].temperature} °C`}</p>
         <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
         </WidgetDiv>
-       
         <RightCloud src={require('./unnamed.png')} />
+
+        
         </WeatherContainer>
+
+       {weather && average[0].precipitation < 50? <div><StyledCondImg src={require("./watercan.gif")} /> </div> : <div><StyledCondImg src={require("./rain.gif")} /> </div>}
+
         <StyledImage src={require('./flower2buds.png')} />
         </Wrapper>
 
@@ -114,4 +118,11 @@ width: auto;
 const RightCloud = styled.img`
 max-height: 17vh;
 width: auto;
+`
+
+const StyledCondImg = styled.img`
+
+width: 10rem;
+margin-left: 8%;
+
 `

@@ -55,7 +55,7 @@ const _id = uuidv4();
   };
 
   //THIS ENDPOINT WORKS
-  //this endpoint gets all posts' data but may be used to generate the titles alone
+  //this endpoint gets all posts' data but is used to generate the titles alone
 const getPosts = async (req, res) => {
 
     const client = new MongoClient(MONGO_URI, options);
@@ -64,7 +64,7 @@ const getPosts = async (req, res) => {
     const db = client.db(DB_NAME);
     await client.connect();
   
-    const result = await db.collection("posts").find().toArray();
+    const result = await db.collection("posts").find().sort({time:-1}).toArray();
     //this result limit logic is lifted from mongodb1, will currently only display  25 posts
     let defaultStart = 0;
     let defaultLimit = 25;

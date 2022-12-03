@@ -4,11 +4,24 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import {useAuth0} from "@auth0/auth0-react"
 import Profile from "./Profile";
+import { useState } from "react";
 
 const NavBar = () => {
     const {user, isAuthenticated} = useAuth0()
+    // add state `isOpen, setIsOpen`
+    const [isOpen, setIsOpen] = useState(false)
+    
     return ( <>
     <Wrapper>
+  
+        {/* <HamburgerButton onClick={setIsOpen(!isOpen)}  src={require('./hamburger.png')}/>
+          {/* - show if media width < 600px */}
+          {/* - onClick => setIsOpen(!isOpen) */}
+  
+      {/*
+        <ContentWrapper isOpen={isOpen} />
+      */}
+
     <StyledNavLink to={"/"}>Home</StyledNavLink>
     
     <StyledNavLink to={"/plantingtabletest"}>Planting Chart</StyledNavLink>
@@ -42,7 +55,9 @@ align-items: center;
 
 gap: 1%;
 
+@media (max-width: 600px) {
 
+}
 
 `
 
@@ -57,3 +72,25 @@ color: var(--bone);
 }
 
 `
+
+const HamburgerButton = styled.img`
+
+width: 2rem;
+
+
+@media (max-width: 600px) {
+  display: block;
+          /* onClick => setIsOpen(!isOpen)  */
+        }
+
+`
+
+/*
+const ContentWrapper = styled.div`
+  display: block;
+
+  @media (max-width: 600px) {
+    display: ${props => (props.isOpen ? `flex` : `none`)};
+  }
+`
+ */

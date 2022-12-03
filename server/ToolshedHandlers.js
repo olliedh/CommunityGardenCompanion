@@ -116,4 +116,130 @@ const test=(req,res)=>{
   res.status(200).json({status:200 , data:test})
 }
 
-module.exports = {getTools, addNewReservation, test}
+//
+const getAllReservations =  async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+
+try {
+  await client.connect();
+  // declare the database
+  const db = client.db(DB_NAME);
+  // create a new reservation object
+
+  const allReservations =  await db.collection("reservations").find().toArray();
+ console.log(allReservations);
+  if (allReservations) 
+  {  
+    res.status(200).json({ status: 200, data: {}, message: "success, reservation confirmed" });}
+    else {
+
+     res.status(400).json({status: 400, message: "not found"})
+    }
+
+} catch (err) {
+  // if there is an error, console log it and send a 500 status
+  console.log(err.stack);
+  res.status(500).json({ status: 500, message: err.message });
+} finally {
+  // close the connection
+  client.close();
+}
+
+
+}
+
+
+
+
+const getReservationsByDate =  async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+
+try {
+  await client.connect();
+  // declare the database
+  const db = client.db(DB_NAME);
+  // create a new reservation object
+
+
+ const filteredReservations = await filterReservationsByDate(req, res, db);
+
+  
+
+  
+ console.log()
+  if (true) ///
+  {  
+    res.status(200).json({ status: 200, data: {filter}, message: "success, reservation confirmed" });}
+    else {
+
+     res.status(400).json({status: 400, message: "not found"})
+    }
+
+
+
+} catch (err) {
+  // if there is an error, console log it and send a 500 status
+  console.log(err.stack);
+  res.status(500).json({ status: 500, message: err.message });
+} finally {
+  // close the connection
+  client.close();
+}
+
+
+}
+
+
+const isReservedByDate = async(req,res) => {
+
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    // declare the database
+    const db = client.db(DB_NAME);
+    // create a new reservation object
+  
+  
+   const filteredReservations = await filterReservationsByDate(req, res, db);
+
+  const tools = filteredReservations.map( (reservation) => {
+  return  reservation.tools
+
+
+  })
+  .flat()
+
+  res.status(200).json({ status: 200, data: {tools}, message: "success" });}
+  
+
+catch (err) {
+  // if there is an error, console log it and send a 500 status
+  console.log(err.stack);
+  res.status(500).json({ status: 500, message: err.message });
+} finally {
+  // close the connection
+  client.close();
+}
+   
+  
+
+}
+ 
+
+const filterReservationsByDate = async(req, res, db) => {
+
+  const date =  req.params.date
+  console.log(req.params)
+  const ReservationsByDate =  await db.collection("reservations").find().toArray();
+
+  const filteredReservations = ReservationsByDate.filter((reservation)=> {
+
+return   reservation.datereserved === date
+
+  } )
+  return filteredReservations
+}
+
+
+module.exports = {getTools, addNewReservation, test, getAllReservations, getReservationsByDate, isReservedByDate}

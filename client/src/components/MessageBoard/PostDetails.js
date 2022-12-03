@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Spinner from "react-spinkit"
 const PostDetails = ({toggle, setToggle}) => {
 
 
@@ -44,14 +45,18 @@ const PostDetails = ({toggle, setToggle}) => {
     
     return ( <>
      {(status === "loading..." || !postState)? (
-        <div>
-        loading...
-        </div>
+        <SpinnerDiv>
+
+
+      <Spinner name="chasing-dots" color="#9a8939"/>
+
+        </SpinnerDiv>
       ) : (
   <ContentBox>
+    <div>
     <h3>{`Subject: ${postState.title}`}</h3>
   
-    <p>{`${postState.content}`}</p>
+    <p>{`Message: ${postState.content}`}</p>
 
     <p>{`By: ${postState.name}, ${postState.userId}`}</p>
 
@@ -65,7 +70,7 @@ const PostDetails = ({toggle, setToggle}) => {
       
         <li 
         key={obj.commentId}>
-                <p>{obj.content} </p>
+                <p>Comment: {obj.content} </p>
                <div> <span>Name: {" "} {obj.name} {"     "} </span>
                 <span>Posted on: {" "} {obj.time}</span> 
                 </div>
@@ -82,7 +87,7 @@ const PostDetails = ({toggle, setToggle}) => {
     </ul>
 
     {isAuthenticated &&    <Comment postId={postId} showPost={showPost}/>} 
- 
+    </div>
     </ContentBox>) }
     </> );
 }
@@ -92,5 +97,18 @@ export default PostDetails;
 const ContentBox = styled.div`
 display: flex;
 flex-direction: column;
-margin: 2% 5% 130px 5%;
+margin: 2% 5% 130px 3%;
+
+min-width: 75vw;
+`
+
+const SpinnerDiv = styled.div`
+
+display:flex;
+flex-direction: column;
+
+justify-content: center;
+height: 45vh;
+margin-left: 15%;
+
 `

@@ -5,7 +5,7 @@ import Checkbox from "./CheckBox";
 import styled from "styled-components";
 import moment from "moment";
 import {useNavigate} from "react-router-dom"
-
+import Spinner from "react-spinkit"
 
 const LoanForm = ( {setLoanDetails}) => {
     
@@ -19,6 +19,8 @@ const LoanForm = ( {setLoanDetails}) => {
     const [selectedTools, setSelectedTools] = useState({})
     //state of date selection, lifted from loancalendar child, passed down
     const [selectedDate, setSelectedDate] = useState(null);
+    
+    const [whichToolsAreBookedForDate, setWhichToolsAreBookedForDate] = useState(null)
     //////////////////////////////////////////////////////////////////////
     //disabling the submit until the form is filled
     const [disabled, setDisabled] = useState(true);
@@ -95,7 +97,7 @@ const LoanForm = ( {setLoanDetails}) => {
   //endpoint in back: 1. updates the inventory items that have been selected to isAvailable: false
   //2. returns the reservation information for confirmation
     const handleSubmit = (e) => {
-        console.log(disabled)
+     
         e.preventDefault();
         setDisabled(true)
        
@@ -129,13 +131,48 @@ const LoanForm = ( {setLoanDetails}) => {
     }
 
 
+    useEffect (() => {
+
+      if ( !selectedDate) {
+        return 
+      }
+      
+     const formattedDate = `${1900 + selectedDate.getYear() }-${selectedDate.getMonth() + 1}-${selectedDate.getDate()}`
+
+      fetch(`/reservations/${formattedDate}/tools`)
+      .then((res) => res.json())
+      .then((data) => {
+       console.log(data);
+        if (data.status > 299) {
+            //is data.message relevant here?
+            throw new Error(data.message);
+            
+          } else {
+              setWhichToolsAreBookedForDate(data.data.tools);
+              
+              setStatus("idle");
+              
+          }
+      })
+      .catch((error) => {
+          // navigate("/error");
+          console.log(error)
+      });
+      
+
+    }, [selectedDate])
+
+    const isNotBooked = tool => { return whichToolsAreBookedForDate &&  !whichToolsAreBookedForDate.includes(tool)}
+
+
     return ( <>
 
-     { //fix the loading/conditional display here
-     status === "loading..." ? (
-        <div>
-        loading...
-        </div>
+    { status === "loading" ? (
+        <SpinnerDiv>
+
+          <Spinner name="chasing-dots" color="#9a8939"/>
+
+        </SpinnerDiv>
       ) :
    ( <FormWrapper>
     <h2>
@@ -143,31 +180,32 @@ const LoanForm = ( {setLoanDetails}) => {
     </h2> 
 
     <Form onSubmit={handleSubmit}>
-        <ChoicesDiv>   <LoanCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
-        <ul>
+        <ChoicesDiv>   
+          <LoanCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+         <ul>
 
-        {toolsState && toolsState.map((obj)=>{
-        
-        return    <ToolLi  key={obj._id}>
+          {toolsState && toolsState.map((obj)=>{
+
+          return    <ToolLi  key={obj._id}>
               {/* make the handlechange function push the checked items with setSelectedTools */}
              <span>   <input type="checkbox" name={obj.tool} value={obj.tool}  onChange={handleChange} 
-             disabled = {obj.isAvailable? false : true}
+             disabled = { !whichToolsAreBookedForDate || !isNotBooked(obj.tool) }
 />
         
-        <label>
-        {` ${obj.tool}`}
-      </label> </span>  <ImgSpan><ToolImg src={obj.imgSrc} alt={`${obj.tool}`}></ToolImg></ImgSpan>
+            <label>
+             {` ${obj.tool}`}
+            </label> </span>  <ImgSpan><ToolImg src={obj.imgSrc} alt={`${obj.tool}`}></ToolImg></ImgSpan>
       
                     
                 
                   </ToolLi>
                   
 
-        }) }
+             }) }
          </ul>
          </ChoicesDiv> 
            
-        <button type="submit" disabled={disabled}>Create Reservation</button>
+        <LoanButton type="submit" disabled={disabled}>Create Reservation</LoanButton>
     </Form>
     </FormWrapper>
     
@@ -180,8 +218,8 @@ export default LoanForm;
 const FormWrapper = styled.div`
 display: flex;
 flex-direction: column;
-align-items: center;
-margin-bottom: 130px;
+/* align-items: center; */
+margin: 2% 5% 150px 3%;
 
 `;
 const ToolImg = styled.img`
@@ -196,15 +234,15 @@ box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 const ToolLi = styled.li`
 font-weight: 500;
 display:flex;
-gap: 5px;
-align-items: center;
+/* gap: 5px; */
+/* align-items: center; */
 /* */
-width: 25vw;
+width: 20vw;
 min-width: 200px;
 justify-content: space-between;
 padding-left: 0;
 margin-bottom: 2%;
-padding-top: 5%;
+padding-top: 2%;
 
 `;
 
@@ -224,11 +262,29 @@ const Form = styled.form`
 
 display:flex;
 flex-direction: column;
-align-items:center;
+
+/* align-items:center; */
 `
 
 const ChoicesDiv = styled.div`
+margin-left: 3%;
+/* display: flex;
 
-display: flex;
-flex-wrap:wrap;
+flex-wrap:wrap; */
+`
+
+const SpinnerDiv = styled.div`
+
+display:flex;
+flex-direction: column;
+
+justify-content: center;
+height: 45vh;
+margin-left: 10%;
+
+`
+
+const LoanButton = styled.button`
+
+width: 17rem;
 `

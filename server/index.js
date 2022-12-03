@@ -20,7 +20,10 @@ const {
 
     getTools,
     addNewReservation, 
-    test
+    getAllReservations,
+    test,
+    getReservationsByDate,
+    isReservedByDate
   } = require("./ToolshedHandlers")
 
 const port = 8000;
@@ -62,7 +65,13 @@ express()
 //post a reservation
 .post('/reservations/newreservation', addNewReservation )
 
+//get reservations
 
+.get('/reservations', getAllReservations)
+
+.get('/reservations/:date', getReservationsByDate)
+
+.get('/reservations/:date/tools', isReservedByDate)
 
     .listen(port, () => {
     console.log(`Example app listening on port ${port}`)
