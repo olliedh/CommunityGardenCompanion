@@ -66,11 +66,12 @@ express()
 .post('/reservations/newreservation', addNewReservation )
 
 //get reservations
-
 .get('/reservations', getAllReservations)
+
 
 .get('/reservations/:date', getReservationsByDate)
 
+//this endpoint is fetched in the front to check which tools are available
 .get('/reservations/:date/tools', isReservedByDate)
 
     .listen(port, () => {

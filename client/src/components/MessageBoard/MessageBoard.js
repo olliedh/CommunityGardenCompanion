@@ -113,10 +113,10 @@ const navigate = useNavigate()
            >
                 <Link to={`/postdetails/${obj._id}`}>
                     <StyledPostList>
-                    <h4>{ `Subject: ${obj.title}`} </h4>
-                   <div> <span>Name: {" "} {obj.name} {"     "} </span>
+                    <div>{ `Subject: ${obj.title}`} </div>
+                   <DetailsDiv> <span>Name: {" "} {obj.name} {"     "} </span>
                     <span>Posted on: {" "} {obj.time}</span> 
-                    </div>
+                    </DetailsDiv>
                     </StyledPostList>
                 </Link> 
           
@@ -134,7 +134,7 @@ const navigate = useNavigate()
     </ul>
     <PostDiv>
    
-    {isAuthenticated && <Post showPost={showPost}/>} 
+    {isAuthenticated && <Post showPost={showPost} status={status}/>} 
 
     </PostDiv>
 
@@ -195,4 +195,11 @@ gap: 1%;
 const    PostDiv = styled.div`
 
 
+`
+
+const DetailsDiv = styled.div`
+
+font-size: 12px;
+color: var(--dark-sienna);
+font-weight: lighter;
 `

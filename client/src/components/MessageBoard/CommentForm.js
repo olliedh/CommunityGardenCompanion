@@ -71,6 +71,11 @@ display: flex;
 flex-direction: column;
 min-width: 250px;
 margin: 2% 30% 2% 30%;
+background: hsla(128, 21%, 57%, 0.2);
+min-width: 200px;
+padding: 6%;
+border-radius: 29% 75% 37% 36% / 27% 28% 32% 30%   ;
+box-shadow: 0 3px 6px 0 rgba(59, 22, 14, 0.2), 0 2px 9px 0 rgba(59, 22, 14, 0.19);
 
 
 `

@@ -78,13 +78,13 @@ const LoanForm = ( {setLoanDetails}) => {
     const handleChange = (e) => {
 
     
-        //how do I grab the checkbox value or name to push into the new state?
+        // grab the checkbox value  to push into the selectedTools state
     if (e.target.checked === true) {
 
         setSelectedTools({ ...selectedTools, [e.target.name]: e.target.name})
 
     } else {
-        //This command takes everything from selectedTools (that is not e.target.name) and places it inside the rest variable
+        //This command takes everything from selectedTools (that is not e.target.name) and places it inside the rest variable 
         const {[e.target.name]: _, ...rest} = selectedTools 
         setSelectedTools(rest)
         
@@ -94,7 +94,7 @@ const LoanForm = ( {setLoanDetails}) => {
 
 
   //Submit should post an object containing user.name, user.email, selectedDate, selectedTools
-  //endpoint in back: 1. updates the inventory items that have been selected to isAvailable: false
+  //endpoint in back: 1. updates the inventory items that have been selected to isAvailable: false (this was dropped)
   //2. returns the reservation information for confirmation
     const handleSubmit = (e) => {
      
@@ -132,11 +132,11 @@ const LoanForm = ( {setLoanDetails}) => {
 
 
     useEffect (() => {
-
+ //stops the function if date selected is null (it will execuse again as soon as selectedDate state changes)
       if ( !selectedDate) {
         return 
       }
-      
+     //datepicker gives us a date object that has to be formatted to look like year-month-date for the address params - the db still keeps the long timestamp as a string
      const formattedDate = `${1900 + selectedDate.getYear() }-${selectedDate.getMonth() + 1}-${selectedDate.getDate()}`
 
       fetch(`/reservations/${formattedDate}/tools`)
@@ -144,7 +144,7 @@ const LoanForm = ( {setLoanDetails}) => {
       .then((data) => {
        console.log(data);
         if (data.status > 299) {
-            //is data.message relevant here?
+       
             throw new Error(data.message);
             
           } else {

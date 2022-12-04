@@ -21,21 +21,21 @@ const NavBar = () => {
       {/*
         <ContentWrapper isOpen={isOpen} />
       */}
-
+<LinksDiv>
     <StyledNavLink to={"/"}>Home</StyledNavLink>
     
-    <StyledNavLink to={"/plantingtabletest"}>Planting Chart</StyledNavLink>
-
-    {isAuthenticated &&  <StyledNavLink to={"/toolshed"}>The Toolshed</StyledNavLink>}
-
    
-    <StyledNavLink to={"/messageboard"}>Message Board</StyledNavLink>
+    <StyledNavLink to={"/messageboard"}>Messageboard</StyledNavLink>
 
+    {isAuthenticated &&  <StyledNavLink to={"/toolshed"}>Toolshed</StyledNavLink>}
+
+
+    <StyledNavLink to={"/plantingtabletest"}>Guides</StyledNavLink>
     {/* <StyledNavLink to={"/profile"}>Profile</StyledNavLink> */}
-
-    <div width="200"> { isAuthenticated && `${user.name}  `} 
+    </LinksDiv>
+    <UserLog> { isAuthenticated && <User> {`${user.name}   `} </User>} 
       {isAuthenticated? <LogoutButton/>:  <LoginButton/> }
-      </div>
+      </UserLog>
      
     </Wrapper>
     </> );
@@ -53,11 +53,11 @@ display: flex;
 justify-content: flex-end;
 align-items: center;
 
-gap: 1%;
+gap: 2%;
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
 
-}
+} */
 
 `
 
@@ -73,24 +73,56 @@ color: var(--bone);
 
 `
 
-const HamburgerButton = styled.img`
+// const HamburgerButton = styled.img`
 
-width: 2rem;
+// width: 2rem;
 
 
-@media (max-width: 600px) {
-  display: block;
-          /* onClick => setIsOpen(!isOpen)  */
-        }
+// @media (max-width: 600px) {
+//   display: block;
+//           /* onClick => setIsOpen(!isOpen)  */
+//         }
+
+// `
+
+// /*
+// const ContentWrapper = styled.div`
+//   display: block;
+
+//   @media (max-width: 600px) {
+//     display: ${props => (props.isOpen ? `flex` : `none`)};
+//   }
+// `
+//  */
+
+const User = styled.span`
+color: var(--bone);
+text-transform: capitalize;
+
+flex-shrink:3;
+margin-right: 5px;
+margin-left: 5px;
+
 
 `
 
-/*
-const ContentWrapper = styled.div`
-  display: block;
+const UserLog = styled.div`
+display: flex;
 
-  @media (max-width: 600px) {
-    display: ${props => (props.isOpen ? `flex` : `none`)};
-  }
+align-items: center;
+
+@media (max-width: 600px) { 
+  flex-direction: column;
+  align-items: flex-end;
+}
 `
- */
+
+const LinksDiv = styled.div`
+flex-shrink: 0;
+display: flex;
+gap: 2%;
+@media (max-width: 600px) { 
+  margin-right: -25%;
+margin-top: 6%;
+}
+`

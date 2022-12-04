@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+
 // import {Swiper, SwiperSlide} from "swiper/react";
 // import SwiperCore, { Navigation, Pagination, Controller, Thumbs } from 'swiper';
 // import 'swiper/swiper-bundle.css';
@@ -60,10 +61,11 @@ const HomePage = () => {
         <LeftCloud src={require('./suncloud.png')} />
         <WidgetDiv>
         {moment().format('MMMM Do YYYY')}
+        {/* !weather?  */}
         <p>{weather && `Average temperature: ${average[0].temperature} °C`}</p>
         <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
         </WidgetDiv>
-        <RightCloud src={require('./unnamed.png')} />
+        <RightCloud src={require('./clouds.png')} />
 
         
         </WeatherContainer>
@@ -124,5 +126,6 @@ const StyledCondImg = styled.img`
 
 width: 10rem;
 margin-left: 8%;
+
 
 `

@@ -129,7 +129,7 @@ h1 {
   }
 
   h2 {
-    color: #7ca982;
+    color: var(--shiny-shamrock);
     font-weight: 500;
     font-family: "hind", sans-serif;
     /* text-shadow: 1px 1px 4px rgba(0,0,0,0.3); */
@@ -210,12 +210,12 @@ a:visited {
 
 a:hover{
   color: var(--mango-tango);
-
+}
 a:active{
   color: var(--mango-tango);
- 
+font-weight: bold;
 }
-}
+
 `
 
 

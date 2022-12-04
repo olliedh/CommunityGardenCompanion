@@ -52,9 +52,9 @@ const getTools = async (req, res) => {
 
 
   //-----------------------------------------------------\\
-// function that posts a new reservation and clears the cart \\
+// function that posts a new reservation, updates inventory and sends reservation to frontend \\
 //-----------------------------------------------------\\
-//modify this endpoint to post a new reservation and update inventory items
+//modify this endpoint - isAvailable boolean no longer required
 
 const addNewReservation = async (req, res) => {
 //     // get the order info from the body object
@@ -86,8 +86,8 @@ const addNewReservation = async (req, res) => {
       
       // update the tools array to isAvailable = false
             
-           const updateInventory =  await db.collection("Inventory").updateMany({tool: {$in:tools} } 
-            ,[{ $set:{isAvailable:false}}]);
+          //  const updateInventory =  await db.collection("Inventory").updateMany({tool: {$in:tools} } 
+          //   ,[{ $set:{isAvailable:false}}]);
 
             // 
             //updateMany({tool= {$in :tools }} , $set:{isAvailable:false})
@@ -111,12 +111,12 @@ if (result)
       client.close();
     }
   };
-const test=(req,res)=>{
-  const test = req.body
-  res.status(200).json({status:200 , data:test})
-}
 
-//
+
+
+
+
+//isn't used directly by the front
 const getAllReservations =  async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
 
@@ -165,17 +165,15 @@ try {
 
   
 
-  
+  /////////////this res conditional needs fixing to fail if say, there's an error in dates//////////
  console.log()
   if (true) ///
   {  
-    res.status(200).json({ status: 200, data: {filter}, message: "success, reservation confirmed" });}
+    res.status(200).json({ status: 200, data: {filter}, message: "success, reservations by date found" });}
     else {
 
-     res.status(400).json({status: 400, message: "not found"})
+     res.status(400).json({status: 400, message: "reservations by date not found"})
     }
-
-
 
 } catch (err) {
   // if there is an error, console log it and send a 500 status
@@ -189,7 +187,7 @@ try {
 
 }
 
-
+///Endpoint for the fetch on selection
 const isReservedByDate = async(req,res) => {
 
   const client = new MongoClient(MONGO_URI, options);
@@ -202,11 +200,9 @@ const isReservedByDate = async(req,res) => {
   
   
    const filteredReservations = await filterReservationsByDate(req, res, db);
-
+//maps over reservtions and turns the tool array of arrays into an array of strings
   const tools = filteredReservations.map( (reservation) => {
   return  reservation.tools
-
-
   })
   .flat()
 
@@ -226,13 +222,15 @@ catch (err) {
 
 }
  
-
+//
 const filterReservationsByDate = async(req, res, db) => {
-
+//get the date from params
   const date =  req.params.date
   console.log(req.params)
+  //get reservations
   const ReservationsByDate =  await db.collection("reservations").find().toArray();
 
+  //find reservations made on a specific date
   const filteredReservations = ReservationsByDate.filter((reservation)=> {
 
 return   reservation.datereserved === date
@@ -242,4 +240,4 @@ return   reservation.datereserved === date
 }
 
 
-module.exports = {getTools, addNewReservation, test, getAllReservations, getReservationsByDate, isReservedByDate}
+module.exports = {getTools, addNewReservation, getAllReservations, getReservationsByDate, isReservedByDate}

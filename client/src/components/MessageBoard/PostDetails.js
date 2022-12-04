@@ -54,33 +54,35 @@ const PostDetails = ({toggle, setToggle}) => {
       ) : (
   <ContentBox>
     <div>
+    <Post>
     <h3>{`Subject: ${postState.title}`}</h3>
   
-    <p>{`Message: ${postState.content}`}</p>
+    <Content>{` ${postState.content}`}</Content>
+ <DetailsDiv>
+    <span>{`By: ${postState.name}, ${postState.userId}`}</span>
 
-    <p>{`By: ${postState.name}, ${postState.userId}`}</p>
-
-    <p>{`Posted: ${postState.time}`}</p>
+    <span>{`Posted: ${postState.time}`}</span>
+  </DetailsDiv>
+ </Post>
   <ul>
-  {   postState.comments.length  &&  <h4>Comments</h4>}
+  {   postState.comments.length ?  <h2>Comments</h2> : ""}
     {
-      postState.comments.length && 
+      postState.comments.length ? ( 
       postState.comments.map((obj)=> {
         return (
       
         <li 
         key={obj.commentId}>
-                <p>Comment: {obj.content} </p>
-               <div> <span>Name: {" "} {obj.name} {"     "} </span>
+                <p> {obj.content} </p>
+               <DetailsDiv> 
+                <span>Name: {" "} {obj.name} {"     "} </span>
                 <span>Posted on: {" "} {obj.time}</span> 
-                </div>
-                {/* </StyledPostList> */}
-            {/* </Link>  */}
-         {/* { setPostId= obj.id} */}
+                </DetailsDiv>
+          
             </li> 
             
         )
-     })
+     })) : ""
      
 
     }
@@ -111,4 +113,23 @@ justify-content: center;
 height: 45vh;
 margin-left: 15%;
 
+`
+
+const DetailsDiv = styled.div`
+
+font-size: 12px;
+color: var(--dark-sienna);
+margin-bottom: 1%;
+
+
+
+`
+
+const Content = styled.p`
+font-size: 1.5rem;
+`
+
+const Post = styled.div`
+
+margin-bottom: 3%;
 `
