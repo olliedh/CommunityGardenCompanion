@@ -21,7 +21,6 @@ const {
     getTools,
     addNewReservation, 
     getAllReservations,
-    test,
     getReservationsByDate,
     isReservedByDate
   } = require("./ToolshedHandlers")

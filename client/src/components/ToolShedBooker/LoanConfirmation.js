@@ -64,6 +64,24 @@ max-height: 240px;
 position: fixed;
 bottom: 22px;
 
+
+animation:signup-response 1s 1;
+    -webkit-animation:signup-response 1s 1;
+    animation-fill-mode: forwards;
+
+    animation-delay:8s;
+    -webkit-animation-delay:8s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+
+    @keyframes signup-response{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+@-webkit-keyframes signup-response{
+    from {opacity :1;}
+    to {opacity :0;}
+}
 `
 
 const SpinnerDiv = styled.div`

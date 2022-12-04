@@ -169,7 +169,7 @@ try {
  console.log()
   if (true) ///
   {  
-    res.status(200).json({ status: 200, data: {filter}, message: "success, reservations by date found" });}
+    res.status(200).json({ status: 200, data: {filteredReservations}, message: "success, reservations by date found" });}
     else {
 
      res.status(400).json({status: 400, message: "reservations by date not found"})
@@ -229,13 +229,14 @@ const filterReservationsByDate = async(req, res, db) => {
   console.log(req.params)
   //get reservations
   const ReservationsByDate =  await db.collection("reservations").find().toArray();
-
+console.log(ReservationsByDate)
   //find reservations made on a specific date
   const filteredReservations = ReservationsByDate.filter((reservation)=> {
 
-return   reservation.datereserved === date
+return   reservation.datereserved.includes(date)
 
   } )
+  console.log(filteredReservations , "filteredReservations")
   return filteredReservations
 }
 

@@ -127,5 +127,21 @@ const StyledCondImg = styled.img`
 width: 10rem;
 margin-left: 8%;
 
+animation:signup-response 0.7s 1;
+    -webkit-animation:signup-response 0.7s 1;
+    animation-fill-mode: forwards;
 
+    animation-delay:5s;
+    -webkit-animation-delay:5s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+
+    @keyframes signup-response{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+@-webkit-keyframes signup-response{
+    from {opacity :1;}
+    to {opacity :0;}
+}
 `
