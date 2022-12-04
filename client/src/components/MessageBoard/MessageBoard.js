@@ -121,8 +121,8 @@ const navigate = useNavigate()
                 </Link> 
           
                 </li> 
-               {user && (user.email === obj.userId? <button onClick={()=> handleDelete(obj)}>Delete</button> : "")}
-               {user && (user.email === obj.userId? <button onClick={()=> handleEdit(obj)}>Edit</button> : "")}
+               {user && (user.email === obj.userId? <StyledDelete onClick={()=> handleDelete(obj)}>Delete</StyledDelete> : "")}
+               {user && (user.email === obj.userId? <StyledEdit onClick={()=> handleEdit(obj)}>Edit</StyledEdit> : "")}
 
                </RowDiv>
             </React.Fragment>
@@ -202,4 +202,62 @@ const DetailsDiv = styled.div`
 font-size: 12px;
 color: var(--dark-sienna);
 font-weight: lighter;
+`
+
+const StyledDelete = styled.button`
+border: none;
+height: 50px;
+background: hsla(23, 85%, 63%, 0.2);
+border-radius: 75% 75% 30% 100% / 65% 56% 64% 53% ;
+box-shadow: 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+transition-timing-function: ease-out;
+  transition: 0.22s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+ 
+    opacity: 0.7;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
+
+
+  }
+
+
+  &:active {
+    box-shadow: inset 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+ 
+
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
+  }
+`
+
+
+const StyledEdit = styled.button`
+border: none;
+height: 50px;
+background: hsla(49, 46%, 41%, 0.2);
+border-radius: 100% 52% 82% 69% / 64% 86% 78% 70%  ;
+box-shadow: 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+padding: 0 1% 0 1%;
+transition-timing-function: ease-in-out;
+  transition: 0.22s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+ 
+    opacity: 0.7;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
+
+
+  }
+
+
+  &:active {
+    box-shadow: inset 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+ 
+
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
+  }
 `

@@ -1,7 +1,7 @@
 import Comment from "./CommentForm";
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Spinner from "react-spinkit"
 const PostDetails = ({toggle, setToggle}) => {
@@ -14,7 +14,7 @@ const PostDetails = ({toggle, setToggle}) => {
     const { user, isAuthenticated } = useAuth0();
     const [postState, setPostState] = useState(null)
     const [status, setStatus] = useState("loading...")
-
+    const navigate = useNavigate();
   const showPost = () => {
  
     fetch(`/post/${postId}`)
@@ -42,6 +42,11 @@ const PostDetails = ({toggle, setToggle}) => {
   useEffect(() => {
     showPost()
   }, [postId, toggle]);
+
+  const handleGoBackToMB = () => {
+    navigate(`/messageboard`)
+        
+  }
     
     return ( <>
      {(status === "loading..." || !postState)? (
@@ -87,7 +92,7 @@ const PostDetails = ({toggle, setToggle}) => {
 
     }
     </ul>
-
+<StyledReturn onClick={()=> handleGoBackToMB()}>Go Back</StyledReturn>
     {isAuthenticated &&    <Comment postId={postId} showPost={showPost}/>} 
     </div>
     </ContentBox>) }
@@ -127,9 +132,42 @@ margin-bottom: 1%;
 
 const Content = styled.p`
 font-size: 1.5rem;
+
+max-width: 50rem;
 `
 
 const Post = styled.div`
 
 margin-bottom: 3%;
+`
+
+const StyledReturn = styled.button`
+  color: var(--hunter-green);
+border: none;
+height: 50px;
+background: hsla(128, 21%, 57%, 0.2);
+border-radius: 100% 52% 82% 69% / 64% 86% 78% 70%  ;
+box-shadow: 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+padding: 0 1% 0 1%;
+transition-timing-function: ease-in-out;
+  transition: 0.22s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+ 
+    opacity: 0.7;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
+
+
+  }
+
+
+  &:active {
+    box-shadow: inset 0 1px 2px 0 rgba(59, 22, 14, 0.17), 0 1px 8px 0 rgba(59, 22, 14, 0.19);
+ 
+
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
+  }
+
 `
