@@ -65,7 +65,7 @@ const PostDetails = ({toggle, setToggle}) => {
   
     <Content>{` ${postState.content}`}</Content>
  <DetailsDiv>
-    <span>{`By: ${postState.name}, ${postState.userId}`}</span>
+    <span>{`By: ${postState.name}, ${postState.userId} `}</span>
 
     <span>{`Posted: ${postState.time}`}</span>
   </DetailsDiv>
