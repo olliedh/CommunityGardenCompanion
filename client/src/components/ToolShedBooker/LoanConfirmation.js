@@ -26,18 +26,20 @@ const LoanConfirmation = ({loanDetails}) => {
                         Hurray! Your toolshed reservation is confirmed
                      </h2>
                     
-                    <p> Your Name: {loanDetails.name}</p>
-                    <p>  Your Email: {loanDetails.email}</p>
-                    <p> Reserved date: { loanDetails.datereserved &&
+                    <p> Your Name: <Details>{loanDetails.name}</Details></p>
+                    <p>  Your Email: <Details>{loanDetails.email}</Details></p>
+                    <p> Reserved date: <Details> { loanDetails.datereserved &&
                     formattedDate(
                         loanDetails.datereserved
                         )
-                        } </p>
-                    <p> Tools reserved: </p>
+                        } </Details> </p>
+                    <h3> Tools reserved: </h3>
+                    <ul>
                     {loanDetails?.tools.map( (tool) => {
 
-                        return  <p key={loanDetails._id}>{`${tool} `}</p>
+                        return  <Li key={loanDetails._id}>{`${tool} `}</Li>
                     })}
+                    </ul>
                     </Wrapper>
                     <Img src={require('./wheelbarrow.gif')} alt="wheelbarrow image"/>;
                     
@@ -54,7 +56,7 @@ const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
 /* align-items: center; */
-margin: 2%;
+margin: 3%;
 margin-bottom: 200px;
 `
 
@@ -63,13 +65,13 @@ const Img = styled.img`
 max-height: 240px;
 position: fixed;
 bottom: 22px;
-
+margin-left: 100px;
 
 animation:signup-response 1s 1;
     -webkit-animation:signup-response 1s 1;
     animation-fill-mode: forwards;
 
-    animation-delay:7s;
+    animation-delay:6s;
     -webkit-animation-delay:7s; /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
 
@@ -93,4 +95,17 @@ justify-content: center;
 height: 45vh;
 margin-left: 10%;
 
+`
+
+const Li = styled.li`
+
+display: list-item; 
+list-style-type: disc;
+list-style-position: inside;
+font-size: 18px;
+`
+
+const Details = styled.span`
+font-size: 20px;
+color: var(--dark-sienna);
 `

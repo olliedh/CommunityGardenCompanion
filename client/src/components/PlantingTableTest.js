@@ -1,11 +1,16 @@
-import styled from "styled-components";
 
+import styled from "styled-components";
+import PlantingTableFall from "./PlantingTableFall";
 
 const PlantingTableTest = () => {
     return (
         
         <>
+                <TopP>The charts below offer planting timelines relevant to Montreal, courtesy of <a href="https://garden.org/">Garden.org</a>.</TopP>
+        <Wrapper>
+
         <Title>Spring Planting Timetable</Title>
+
         <StyledTableWrap>
 <table >
   <thead><tr>
@@ -203,6 +208,8 @@ const PlantingTableTest = () => {
  </tbody>
  </table>
  </StyledTableWrap>
+ </Wrapper>
+ <PlantingTableFall/>
         </>
      );
 }
@@ -213,10 +220,29 @@ const StyledTableWrap= styled.div`
 
 display: flex;
 justify-content: center;
-margin-bottom: 130px;
+margin-bottom: 30px;
+
 `
 
 const Title = styled.h2`
 display: flex;
 justify-content: center;
+`
+
+const Wrapper = styled.div`
+
+
+margin: 0 15% 0 15%;
+background: hsla(23, 85%, 63%, 0.13);
+min-width: 200px;
+padding: 8% 3% 6% 3%;
+border-radius:  69% 85% 57% 36% / 52% 44% 29% 20%   ;
+box-shadow: 0 3px 6px 0 rgba(59, 22, 14, 0.2), 0 2px 9px 0 rgba(59, 22, 14, 0.19);
+margin-bottom: 130px;
+`
+
+const TopP = styled.p`
+margin: 0 3% 3% 3%;
+
+
 `

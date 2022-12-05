@@ -1,3 +1,4 @@
+
 import Comment from "./CommentForm";
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -70,7 +71,7 @@ const PostDetails = ({toggle, setToggle}) => {
   </DetailsDiv>
  </Post>
   <ul>
-  {   postState.comments.length ?  <h2>Comments</h2> : ""}
+  {   postState.comments.length ?  <Commentsh2>Comments</Commentsh2> : ""}
     {
       postState.comments.length ? ( 
       postState.comments.map((obj)=> {
@@ -132,7 +133,7 @@ margin-bottom: 1%;
 
 const Content = styled.p`
 font-size: 1.5rem;
-
+line-height: 1.4;
 max-width: 50rem;
 `
 
@@ -170,4 +171,8 @@ transition-timing-function: ease-in-out;
     text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
   }
 
+`
+const Commentsh2 = styled.h2`
+
+font-family: "MuseoModerno";
 `

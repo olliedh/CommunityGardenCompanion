@@ -17,7 +17,7 @@ import PostDetails from "./MessageBoard/PostDetails";
 import LoanForm from "./ToolShedBooker/LoanForm";
 import LoanConfirmation from "./ToolShedBooker/LoanConfirmation";
 import EditPost from "./MessageBoard/EditPost";
-
+import About from "./About";
 
 const App = () => {
 
@@ -65,6 +65,11 @@ const App = () => {
 <Route
             path="/plantingtabletest"
             element={ <PlantingTableTest/>}
+          />
+
+<Route
+            path="/about"
+            element={ <About/>}
           />
              <Route
             path={"/postdetails/:postId"}

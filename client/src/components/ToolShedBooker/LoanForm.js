@@ -1,3 +1,4 @@
+
 import LoanCalendar from "./LoanCalendar";
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -175,9 +176,9 @@ const LoanForm = ( {setLoanDetails}) => {
         </SpinnerDiv>
       ) :
    ( <FormWrapper>
-    <h2>
+    <Shedh2>
       Reserve tools from the shed!
-    </h2> 
+    </Shedh2> 
 
     <Form onSubmit={handleSubmit}>
         <ChoicesDiv>   
@@ -218,15 +219,26 @@ export default LoanForm;
 const FormWrapper = styled.div`
 display: flex;
 flex-direction: column;
-/* align-items: center; */
-margin: 2% 5% 150px 3%;
+align-items: center;
+margin: 2% 30% 150px 30%;
+
+
+
+
+background: hsla(49, 46%, 41%, 0.2);
+min-width: 200px;
+padding: 8% 3% 6% 3%;
+border-radius:  69% 85% 57% 36% / 52% 44% 29% 20%   ;
+box-shadow: 0 3px 6px 0 rgba(59, 22, 14, 0.2), 0 2px 9px 0 rgba(59, 22, 14, 0.19);
+
+
 
 `;
 const ToolImg = styled.img`
 height: 50px;
 width: auto;
 max-width: 100px;
-border-radius: 3px;
+border-radius: 5px;
 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 `;
@@ -254,7 +266,7 @@ flex-direction: column;
 width: 80px;
 background-color: whitesmoke;
 padding:2px; 
- border-radius: 2px;
+ border-radius: 5px;
 
 `;
 
@@ -280,7 +292,7 @@ flex-direction: column;
 
 justify-content: center;
 height: 45vh;
-margin-left: 10%;
+align-items: center;
 
 `
 
@@ -288,3 +300,12 @@ const LoanButton = styled.button`
 
 width: 17rem;
 `
+
+const Shedh2  = styled.h2`
+color: var(--hunter-green);
+font-family: "MuseoModerno", cursive ;
+
+
+`
+
+

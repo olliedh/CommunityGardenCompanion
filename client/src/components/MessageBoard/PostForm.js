@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
@@ -52,16 +53,16 @@ const Post = ({showPost, status}) =>{
         <h3>Post a new message</h3>
         <StyledForm onSubmit={postHandler} >
         
-            <label >Title</label>
+            <label >Subject</label>
             <input type="text" 
             value={postData?.title} 
-            placeholder="Subject"
+            // placeholder="Subject"
             name="title" onChange={changeHandler} />
 
-            <label >Content</label>
+            <label >Message</label>
             <textarea name="content"
              value={postData?.content} 
-             placeholder="Message"
+            //  placeholder="Message"
              id="" cols="30" rows="10" onChange={changeHandler}></textarea>
 
           
@@ -115,3 +116,6 @@ height: 45vh;
 
 
 `
+
+
+

@@ -1,9 +1,13 @@
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 const Footer = () => {
     return (  <>
     <Wrapper>
+      <LinksDiv>
+    <StyledNavLink to={"/about"}>About</StyledNavLink>
 
+    <StyledNavLink to={"/"}>Find us</StyledNavLink>
+    </LinksDiv>
     </Wrapper>
     </>);
 }
@@ -44,3 +48,25 @@ margin-top: 1rem; */
   width: 100%;
 `
 
+const LinksDiv = styled.div`
+
+position: -webkit-sticky; /* Safari */
+  position: fixed;
+ 
+bottom: 5px;
+  right: 8%;
+
+`
+
+const StyledNavLink = styled(NavLink)`
+
+margin-left: 12px;
+font-family: "hind";
+font-size: 12px;
+color: var(--bone);
+
+&:hover {
+  color: #f1ab86;
+}
+
+`

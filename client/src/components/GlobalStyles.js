@@ -1,3 +1,4 @@
+
 import { createGlobalStyle } from "styled-components";
 import Checkbox from "./ToolShedBooker/CheckBox";
 // import img from "../assets/flower2buds.png"
@@ -132,6 +133,8 @@ h1 {
     color: var(--shiny-shamrock);
     font-weight: 500;
     font-family: "hind", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2),
+                 0px -5px 10px rgba(255,255,255,0.15);
     /* text-shadow: 1px 1px 4px rgba(0,0,0,0.3); */
 
   }
@@ -168,11 +171,13 @@ h1 {
   }
 table {
  border-collapse: collapse;
+
 }
 
 td {
 
   border: solid black 1px;
+
   /* &:nth-of-type(5n) {
 
     font-weight: bold;
@@ -187,9 +192,9 @@ td {
 }
 
 
-tr{
+tr:nth-child(even){
 
- 
+ background-color:  hsla(23, 85%, 63%, 0.2);
 }
 
 th {
@@ -221,3 +226,8 @@ font-weight: bold;
 
 
 export default GlobalStyles;
+
+
+
+
+

@@ -122,7 +122,7 @@ flex-shrink: 0;
 display: flex;
 gap: 2%;
 @media (max-width: 600px) { 
-  margin-right: -25%;
+  margin-right: 25%;
 margin-top: 6%;
 }
 `
