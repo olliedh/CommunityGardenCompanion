@@ -210,7 +210,7 @@ const PlantingTableTest = () => {
  </StyledTableWrap>
  </Wrapper>
  <PlantingTableFall/>
- <StyledImage src={require('./flower2buds.png')} />
+ <StyledImage src={require('./flower2buds.png')} alt="decorative image of flower" />
         </>
      );
 }

@@ -59,21 +59,21 @@ const HomePage = () => {
         <h3> Welcome to the Villeray Community Garden page!</h3>
         {/* I would like to show today's date and min/ max daily temperature here */}
         <WeatherContainer>
-        <LeftCloud src={require('./suncloud.png')} />
+        <LeftCloud src={require('./suncloud.png') } alt="stylized cloud with sun peeking through"/>
         <WidgetDiv>
         {moment().format('MMMM Do YYYY')}
         {/* !weather?  */}
         <p>{weather && `Average temperature: ${average[0].temperature} °C`}</p>
         <p>{weather && `Chance of rain: ${average[0].precipitation}%`}</p>
         </WidgetDiv>
-        <RightCloud src={require('./clouds.png')} />
+        <RightCloud src={require('./clouds.png')} alt="cloud and tiny cloud" />
 
         
         </WeatherContainer>
 
-       {weather && average[0].precipitation < 50? <div><StyledCondImg src={require("./watercan.gif")} /> </div> : <div><StyledCondImg src={require("./rain.gif")} /> </div>}
+       {weather && average[0].precipitation < 50? <div><StyledCondImg src={require("./watercan.gif") } alt="It might be a good idea to water your garden." /> </div> : <div><StyledCondImg src={require("./rain.gif")} alt="Rain is likely today. No need to water the garden."/> </div>}
 
-        <StyledImage src={require('./flowerx2.png')} />
+        <StyledImage src={require('./flowerx2.png')} alt="decorative image of flower"/>
         </Wrapper>
 
         </>
