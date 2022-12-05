@@ -139,7 +139,7 @@ const navigate = useNavigate()
 
     </PostDiv>
 
-    {/* <StyledImage src={require('./flowerx2.png')} /> */}
+  
 
     </ContentBox> 
     )}
@@ -262,15 +262,3 @@ transition-timing-function: ease-in-out;
     text-shadow: 2px 2px 3px rgba(255,255,255,0.8);
   }
 `
-
-// const StyledImage = styled.img`
-//  height: auto; 
-//     width: auto; 
-//     max-height: 250px;
-// position: -webkit-sticky; /* Safari */
-//   position: fixed;
- 
-// bottom: 50px;
-//   right: 2%;
-//   z-index:999;
-// `

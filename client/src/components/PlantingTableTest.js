@@ -210,6 +210,7 @@ const PlantingTableTest = () => {
  </StyledTableWrap>
  </Wrapper>
  <PlantingTableFall/>
+ <StyledImage src={require('./flower2buds.png')} />
         </>
      );
 }
@@ -245,4 +246,16 @@ const TopP = styled.p`
 margin: 0 3% 3% 3%;
 
 
+`
+
+const StyledImage = styled.img`
+ height: auto; 
+    width: auto; 
+    max-height: 250px;
+position: -webkit-sticky; /* Safari */
+  position: fixed;
+ 
+bottom: 50px;
+  right: 2%;
+  z-index:999;
 `

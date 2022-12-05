@@ -72,7 +72,7 @@ const HomePage = () => {
 
        {weather && average[0].precipitation < 50? <div><StyledCondImg src={require("./watercan.gif")} /> </div> : <div><StyledCondImg src={require("./rain.gif")} /> </div>}
 
-        <StyledImage src={require('./flower2buds.png')} />
+        <StyledImage src={require('./flowerx2.png')} />
         </Wrapper>
 
         </>
