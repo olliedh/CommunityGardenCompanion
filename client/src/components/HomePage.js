@@ -16,7 +16,8 @@ const HomePage = () => {
         .then((res) => res.json())
         .then((data) => {
           setWeather(data);
-          console.log(data);
+      
+        
         })
         .catch((err) => console.log(err));
       }, [])
@@ -47,7 +48,7 @@ const HomePage = () => {
         average.push(avgObject);
 
       });
-      console.log(typeof average[0].precipitation);
+      // console.log(typeof average[0].precipitation);
      
       }
     return ( 

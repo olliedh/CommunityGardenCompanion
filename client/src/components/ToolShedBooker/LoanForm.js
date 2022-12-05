@@ -112,9 +112,8 @@ const LoanForm = ( {setLoanDetails}) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log("Success! :", data);
+              // console.log("Success! :", data);
               setLoanDetails(data.data)
-              console.log(data.data)
               navigate(`/loanconfirmation/${data.data._id}`)
 
            

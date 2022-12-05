@@ -30,7 +30,7 @@ const App = () => {
     fetch("http://api.openweathermap.org/data/2.5/forecast?lat=45.5088&lon=-73.554&appid=498b5bd5209a45fb40c5dfde11edf05c")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
     })
     .catch((err) => console.log(err));
   }, [])
