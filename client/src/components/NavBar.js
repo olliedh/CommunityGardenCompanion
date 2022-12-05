@@ -67,10 +67,42 @@ const StyledNavLink = styled(NavLink)`
 font-family: "hind";
 font-weight: 500;
 color: var(--bone);
-&:visited {
-  color: #f1ab86;
+position: relative;
+&:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  transition: -webkit-transform 250ms ease-in;
+  transition: transform 250ms ease-in;
+  transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
+
 }
 
+&:hover:after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+&:visited {
+  color: #f1ab86;
+  position: relative;
+}
+
+&.active {
+
+  color: var(--bone);
+  
+
+}
 `
 
 // const HamburgerButton = styled.img`
@@ -98,7 +130,7 @@ color: var(--bone);
 const User = styled.span`
 color: var(--bone);
 text-transform: capitalize;
-
+opacity: 0.9;
 flex-shrink:3;
 margin-right: 5px;
 margin-left: 5px;
