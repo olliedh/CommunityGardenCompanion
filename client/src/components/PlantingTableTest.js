@@ -5,7 +5,7 @@ import PlantingTableFall from "./PlantingTableFall";
 const PlantingTableTest = () => {
     return (
         
-        <>
+        <>      <TopP><a href="https://gilmour.com/companion-planting-chart-guide">Companion Planting Guide</a></TopP>
                 <TopP>The charts below offer planting timelines relevant to Montreal, courtesy of <a href="https://garden.org/">Garden.org</a>.</TopP>
         <Wrapper>
 
@@ -244,6 +244,10 @@ margin-bottom: 130px;
 
 const TopP = styled.p`
 margin: 0 3% 3% 3%;
+
+display: list-item; 
+list-style-type: disc;
+list-style-position: inside;
 
 
 `

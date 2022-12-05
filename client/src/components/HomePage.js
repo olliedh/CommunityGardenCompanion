@@ -71,7 +71,8 @@ const HomePage = () => {
         
         </WeatherContainer>
 
-       {weather && average[0].precipitation < 50? <div><StyledCondImg src={require("./watercan.gif") } alt="It might be a good idea to water your garden." /> </div> : <div><StyledCondImg src={require("./rain.gif")} alt="Rain is likely today. No need to water the garden."/> </div>}
+       {weather && average[0].precipitation < 50? (<div><StyledCondImg src={require("./watercan.gif")} title="It might be a good idea to water your garden." alt="watercan animation" /> </div> ): 
+      ( <div><StyledCondImg src={require("./rain.gif")} title="Rain is likely today. No need to water the garden." alt="rain animation"/> </div>)}
 
         <StyledImage src={require('./flowerx2.png')} alt="decorative image of flower"/>
         </Wrapper>
