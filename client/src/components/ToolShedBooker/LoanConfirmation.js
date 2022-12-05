@@ -71,8 +71,8 @@ animation:signup-response 1s 1;
     -webkit-animation:signup-response 1s 1;
     animation-fill-mode: forwards;
 
-    animation-delay:6s;
-    -webkit-animation-delay:7s; /* Safari and Chrome */
+    animation-delay:5s;
+    -webkit-animation-delay:5s; /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
 
     @keyframes signup-response{
