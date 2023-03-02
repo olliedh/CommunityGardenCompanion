@@ -6,7 +6,7 @@ const Footer = () => {
       <LinksDiv>
     <StyledNavLink to={"/about"}>About</StyledNavLink>
 
-    <StyledNavLink to={"/"}>Find us</StyledNavLink>
+    <StyledNavLink to={"/findus"}>Find us</StyledNavLink>
     </LinksDiv>
     </Wrapper>
     </>);

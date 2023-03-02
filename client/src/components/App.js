@@ -18,6 +18,7 @@ import LoanForm from "./ToolShedBooker/LoanForm";
 import LoanConfirmation from "./ToolShedBooker/LoanConfirmation";
 import EditPost from "./MessageBoard/EditPost";
 import About from "./About";
+import Contact from "./Contact";
 
 const App = () => {
 
@@ -71,6 +72,12 @@ const App = () => {
             path="/about"
             element={ <About/>}
           />
+
+<Route
+            path="/findus"
+            element={ <Contact/>}
+          />
+
              <Route
             path={"/postdetails/:postId"}
             element={ <PostDetails  toggle={toggle} setToggle={setToggle}/>}
